@@ -1,0 +1,23 @@
+Check if a person can attend all meetings?
+-------------------------------------------
+Given an array of meeting time intervals consisting of start and end times 
+[[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+
+Example 1:
+Input: [[0,20],[5,10],[20,30]]
+
+Output: false
+
+Example 2:
+Input: [[4,6],[7,10]
+
+Output: true
+
+-------X-------X-------X-------X-------X-------X-------X--------X-------X-------
+
+Solution:
+---------
+We will sort by end time of all the meetings and then check if there is a case 
+where one meeting starts before the previous meeting stops. If such a case exists, 
+then it is not possible to attend all the meetings. Otherwise, it is possible to 
+attend all the meetings
