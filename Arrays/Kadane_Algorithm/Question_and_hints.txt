@@ -20,4 +20,19 @@ Output: 1
 
 Explanation: Array has only one element and which is giving positive sum of 1.
 
--------------X-------------X-------------X-------------X-------------X--------------X-----------
+-------------X---------------X---------------X---------------X---------------X----------------X-----------
+
+We can slightly modify the above question by adding one more constraint.
+Constraint: The length of sub-array shose sum is maximum should also be of maximum possible length.
+
+Example 1:
+
+Input: arr = {-3, -2, 4, -2, 3, 2, -1, 1};
+
+Output: 4, -2, 3, 2, -1, 1
+
+Explanation: Here two subarrays are possible {4, -2, 3, 2} and {4, -2, 3, 2, -1, 1} as both 
+have sum 7 which is maximum. But since length of {4, -2, 3, 2, -1, 1} is greater than the length 
+of {4, -2, 3, 2}. So, {4, -2, 3, 2, -1, 1} is the answer.
+
+-------------X---------------X---------------X---------------X---------------X----------------X-----------

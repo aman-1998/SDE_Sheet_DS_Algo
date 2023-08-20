@@ -33,7 +33,8 @@ public class Attend_All_Meetings {
 		public static boolean attendAllMeetings(int[][] intervals) {
 			
 			// Sorting 2d matrix
-			Arrays.sort(intervals, (int[] interval1, int[] interval2) -> interval1[1] < interval2[1] ? -1 : 1);
+			//Arrays.sort(intervals, (int[] interval1, int[] interval2) -> interval1[1] < interval2[1] ? -1 : 1);
+			Arrays.sort(intervals, Comparator.comparing((int[] interval) -> interval[0])); // Better approach to sort than above line
 				
 			//Compare previous interval's endTime and current interval's startTime
 			int prevEndTime = intervals[0][1];

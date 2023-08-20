@@ -3,6 +3,14 @@ package algorithms;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * This problem has 3 variations. They are stated below:
+ * Variation 1: Given row number r and column number c. Print the element at position (r, c) in Pascal’s triangle.
+ * Variation 2: Given the row number n. Print the n-th row of Pascal’s triangle.
+ * Variation 3: Given the number of rows n. Print the first n rows of Pascal’s triangle.
+ * 
+ */
+
 public class Pascal_Triangle {
 	
 	public static void main(String[] args) {

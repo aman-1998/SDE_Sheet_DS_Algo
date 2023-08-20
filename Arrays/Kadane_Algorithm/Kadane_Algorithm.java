@@ -1,12 +1,22 @@
-package practice;
+package algorithms;
 
+/* Problem Statement: Given an integer array arr, find the contiguous 
+ * subarray (containing at least one number) which has the largest 
+ * sum and return its sum and print the subarray.
+ * 
+ */
+ 
 public class Kadane_Algorithm {
 	
 	public static int[] startEnd = {0, 0};
 	
 	public static void main(String[] args) {
+		//int[] arr = {-2, 1, -3, 4, -1, 2, 1, -7, 4};
+		//int[] arr = {-3, -2, -4, -7};
+		//int[] arr = {-3, -2, 4, -2, 3, 2, -1, 2};
+		//int[] arr = {-2, -3, 1, -1, 3, 2, -3, 11};
+		int[] arr = {-3, -2, 4, -2, 3, 2, -1, 1};
 		
-		int[] arr = {-2, -3, 1, -1, 3, 2, -3, 11};
 		int sum = continuousSubArrayWithMaxSum(arr);
 		
 		System.out.print("The continuous sub-array with maximum sum is: ");
