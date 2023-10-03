@@ -1,0 +1,13 @@
+Prim's Algorithm
+-----------------------------
+Problem Statement: Given a weighted graph. Find Minimal Spanning tree and it's cost.
+
+Solution and Hint:-
+--------------------
+Starting vertex is given.
+
+1. Start from given vertex.
+2. Out of all the edges (from the vertices which are already visited) to the 
+   vertices which are not yet visited, select the one with minimum cost.
+3. Repeat 2nd step untill all the vertices are selected.
+
