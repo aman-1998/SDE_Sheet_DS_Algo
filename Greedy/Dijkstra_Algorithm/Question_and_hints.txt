@@ -1,1 +1,15 @@
-Learn from Ravindra Babu
+Single Source Shortest Path Algorithm (Dijkstra's Algorithm)
+-------------------------------------------------------------
+Problem Statement: Given a directed graph. Find shortest distance from one source to
+all other vertices.
+
+Solution and Hint:-
+--------------------
+Source vertex is given.
+
+1. Start from source vertex.
+2. Relax all the outgoing edges from the source.
+3. Then select the vertex with min distance from the source(so far which is not computed) and 
+   mark it as computed and relax all the outgoing edges to the vertices which are not yet marked 
+   computed.
+
