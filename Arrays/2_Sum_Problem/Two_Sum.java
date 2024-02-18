@@ -18,11 +18,11 @@ public class Two_Sum {
 		//int[] arr = new int[] {2, 4, 6, 8, 11, 10};
 		//int target = 14;
 		
-		//int[] arr = new int[] {2, 4, 6, 8, 5, 11, 10, 5};
-		//int target = 10;
-		
-		int[] arr = new int[] {5, 5, 5};
+		int[] arr = new int[] {2, 4, 6, 8, 5, 11, 10, 5};
 		int target = 10;
+		
+		//int[] arr = new int[] {5, 5, 5};
+		//int target = 10;
 		
 		//boolean check = twoSum_3(arr, target);
 		boolean check = twoSum_2(arr, target);
@@ -110,7 +110,7 @@ public class Two_Sum {
 	// Find all unique pairs and also in a pair same element (index-wise) can't be taken twice.
 	// Original array is not altered here. So, indices can be found
 	// Using HashMap and HashSet
-	// T = O(n)
+	// T = O(n) * O(hashMap_Search + hashMap_put + hashSet_Search) + O(n) = O(n)
 	// S = (n) + O(n/2 * 2) = O(n)
 	private static List<List<Integer>> twoSum_4(int[] arr, int target) {
 		
@@ -140,6 +140,7 @@ public class Two_Sum {
 	
 	// Find all unique pairs and also in a pair same element (index-wise) can't be taken twice.
 	// Original array is altered here. So, indices can't be found
+	// Two Pointer Solution
 	// T = O(n*logn) + O(n) = O(n*logn)
 	// S = O(1)
 	private static List<List<Integer>> twoSum_5(int[] arr, int target) {
@@ -164,8 +165,14 @@ public class Two_Sum {
 				result.add(temp);
 				i++;
 				j--;
-				while((arr[i-1] == arr[i]) && (arr[j] == arr[j+1])) {
+				while(arr[i-1] == arr[i]) {
 					i++;
+					if(i >= j) {
+						break;
+					}
+				}
+				
+				while(arr[j] == arr[j+1]) {
 					j--;
 					if(i >= j) {
 						break;

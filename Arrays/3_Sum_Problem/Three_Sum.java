@@ -16,13 +16,13 @@ public class Three_Sum {
 		int[] arr = {-1, 0, 1, 2, -1, 4};
 		int target = 0; // Target can be anything
 		
-		System.out.println("Unique Pairs:-");
+		System.out.println("Unique Triplets:-");
 		List<List<Integer>> listOfTriplets = three_sum_3(arr, target);
 		listOfTriplets.stream().forEach(triplet -> System.out.println("(" + triplet.get(0) + ", " + triplet.get(1) + ", " + triplet.get(2) + ")"));
 	}
 	
 	// Brute Force
-	// T = O(n^3) + O(n) = O(n^3)
+	// T = O(n^3)*O(hashSet_search) + O(n) = O(n^3)
 	// S = O(n)
 	private static List<List<Integer>> three_sum_1(int[] arr, int target) {
 		
@@ -55,8 +55,8 @@ public class Three_Sum {
 	 * and average time performance of O(1), not worst case. This means, we can suffer an O(n) operation 
 	 * from time to time.
 	 * 
-	 * T = o(n^2)*O(hashMap_Search + hashMap_put + hashSet_add) = O(n^2)
-	 * S = O(n)
+	 * T = o(n^2)*O(hashMap_Search + hashMap_put + hashSet_add) + O(n) = O(n^2)
+	 * S = O(n) + O(n) = O(n)
 	 * 
 	 */
 	private static List<List<Integer>> three_sum_2(int[] arr, int target) {
@@ -91,7 +91,7 @@ public class Three_Sum {
 		return result;
 	}
 	
-	// Best Approach (Optimal)
+	// Best Approach (Optimal) - Two Pointer Solution
 	// T = O(n*logn) * O(n^2) = O(n^2)
 	// S = O(1)
 	private static List<List<Integer>> three_sum_3(int[] arr, int target) {
@@ -122,8 +122,14 @@ public class Three_Sum {
 					result.add(temp);
 					j++;
 					k--;
-					while((arr[j-1] == arr[j]) && (arr[k] == arr[k+1])) {
+					while(arr[j-1] == arr[j]) {
 						j++;
+						if(j >= k) {
+							break;
+						}
+					}
+					
+					while(arr[k] == arr[k+1]) {
 						k--;
 						if(j >= k) {
 							break;
