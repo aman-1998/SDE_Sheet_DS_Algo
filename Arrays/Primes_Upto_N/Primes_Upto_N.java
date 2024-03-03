@@ -43,6 +43,7 @@ public class Primes_Upto_N {
 		boolean[] primes = new boolean[n+1];
 		Arrays.fill(primes, true);
 		
+		// Create Sieve Array
 		for(int i = 2; i <= (int)Math.sqrt(n); i++) { 
 			
 			if(primes[i] == true) {
@@ -83,6 +84,7 @@ public class Primes_Upto_N {
 		
 		int count = 0;
 		
+		// Create Sieve Array
 		for(int i = 2; i <= n; i++) { 
 			
 			if(primes[i] == true) {
@@ -114,6 +116,7 @@ public class Primes_Upto_N {
 		boolean[] primes = new boolean[n];
 		Arrays.fill(primes, true);
 		
+		// Create Sieve Array
 		for(int i = 2; i*i <= n; i++) {
 			
 			if(primes[i] == true) {
@@ -153,6 +156,7 @@ public class Primes_Upto_N {
 
         int count = 0;
 		
+        // Create Sieve Array
 		for(int i = 2; i < n; i++) {
 			
 			if(primes[i] == true) {

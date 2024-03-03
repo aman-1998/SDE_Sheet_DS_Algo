@@ -1,0 +1,47 @@
+I. & (Bitwise AND) Application:-
+---------------------------------
+1. 0 => masking bit; 1 => unmasking bit
+2. To clear nth bit of a number from left or right
+3. To determine whether nth bith is set or clear
+4. x & (x-1) clears right most 1. So, this property can be used to determine whether
+   an integer is a power of 2 or not.
+
+
+II. | (Bitwise OR) Application:-
+---------------------------------
+1. 1 => masking bit; 0 => unmasking bit
+2. To set nth bit from right or left
+
+
+III. ~ (Bitwise NOT) Application:-
+-----------------------------------
+1. To find 1's complement of a number
+2. a - b = a + (2's complement of b) = a + ((1's complement b) + 1) = a + (~b + 1) = a + ~b + 1
+   => a - b = a + ~b + 1
+
+
+IV. ^ (Bitwise XOR) Application:-
+----------------------------------
+1. 1 => toggling bit; 0 => unmasking bit
+2. To toggle nth bit from right or left
+3. Encryption Decryption
+4. x ^ x = 0
+5. x ^ 0 = x
+
+
+V. << (Bitwise Left Shift) Application:-
+-----------------------------------------
+1. Empty places are filled with zeroes
+2. 1 << x = pow(2, x)
+3. x << 1 = x * 2
+
+
+VI. >> (Bitwise Signed Right Shift) Application:-
+--------------------------------------------------
+1. Empty places are filled with most significant bit (signed bit)
+2. x >> 1 = x/2
+
+VII. >>> (Bitwise unsigned right shift) Application:-
+------------------------------------------------------
+1. Empty places are filled with zeroes
+

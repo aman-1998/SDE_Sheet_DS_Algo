@@ -6,9 +6,12 @@ public class X_power_N {
 		System.out.println(myPow(7, 9));
 	}
 	
-	// Recursive Solution (Better and easy to understand)
-	// T = O(log n)
-	// S = O(1)
+	/*
+	 * Recursive Solution
+	 * 
+	 * T = O(log n) [base = 2]
+	 * S = System's internal stack space is used = O(log n) [base = 2]
+	 */
 	public static double myPower(double x, int n) {
 		
 		long nn = (long)n;
@@ -33,9 +36,12 @@ public class X_power_N {
 	
 /* -------------------------------------------------------------------- */
 	
-	// Iterative Solution
-	// T = O(log n)
-	// S = O(1)
+	/*
+	 * Iterative Solution
+	 * 
+	 * T = O(log n) [base = 2]
+	 * S = O(1)
+	 */
 	public static double myPow(double x, int n) {
         long nn = (long)n;
         double ans = 1;
