@@ -1,6 +1,6 @@
 Single Source Shortest Path Algorithm (Dijkstra's Algorithm)
 -------------------------------------------------------------
-Problem Statement: Given a directed graph. Find shortest distance from one source to
+Problem Statement: Given a directed graph with positive edges. Find shortest distance from one source to
 all other vertices.
 
 Solution and Hint:-
