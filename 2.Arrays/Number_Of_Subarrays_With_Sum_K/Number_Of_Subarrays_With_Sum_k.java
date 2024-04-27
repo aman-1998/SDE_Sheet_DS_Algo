@@ -65,7 +65,6 @@ public class Number_Of_Subarrays_With_Sum_k {
 			}
 			
 			Integer frequency = hashMap.get(sum - k);
-			
 			if(frequency != null) {
 				count = count + frequency;
 			}

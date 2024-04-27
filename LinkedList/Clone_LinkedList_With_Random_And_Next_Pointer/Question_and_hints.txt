@@ -1,0 +1,23 @@
+Clone Linked List with Random and Next Pointer
+
+
+12
+
+0
+In this article we will solve the most asked coding interview problem "Clone Linked List".
+
+Problem Statement: Given a Linked list that has two pointers in each node and one of which points to the first node and the other points to any random node. Write a program to clone the LinkedList.
+
+Example 1:
+Input:
+	head = [[1,3],[2,0],[3,null],[4,1]]
+Output:
+	head = [[1,3],[2,0],[3,null],[4,1]]
+
+
+Example 2:
+Input:
+head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output:
+
+head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
