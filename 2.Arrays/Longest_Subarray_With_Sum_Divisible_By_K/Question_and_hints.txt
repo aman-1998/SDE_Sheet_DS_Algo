@@ -1,0 +1,14 @@
+Longest Subarray With Sum divisible by 7
+------------------------------------------
+
+Given an integer array nums and an integer k, return the length of longest non-empty subarray that 
+has a sum divisible by k.
+
+A subarray is a contiguous part of an array.
+
+
+Example 1:
+Input: nums = [1, 2, 2, 1, 2, 3], k = 7
+Output: 4
+Explanation: [2, 2, 1, 2] and [1, 2, 4] are the two subarrays with sum divisible 7. 
+		     So, longest subarray whose sum is divisible by 7 is of size 4.
