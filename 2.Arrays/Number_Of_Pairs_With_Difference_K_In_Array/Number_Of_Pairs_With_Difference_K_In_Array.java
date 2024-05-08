@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class K_Diff_Pairs_In_An_Array {
+public class Number_Of_Pairs_With_Difference_K_In_Array {
 	
 	public static void main(String[] args) {
 		
@@ -17,7 +17,7 @@ public class K_Diff_Pairs_In_An_Array {
 		//int[] arr = {3, 1, 4, 1, 5};
 		//int k = 2;
 		
-		int noOfPairs = find_K_Diff_Pairs_2ndApproach(arr, k);
+		int noOfPairs = count_Pairs_With_Diff_K_2ndApproach(arr, k);
 		
 		System.out.println(noOfPairs);
 	}
@@ -40,7 +40,7 @@ public class K_Diff_Pairs_In_An_Array {
 	 * 
 	 * S = O(2n) = O(n)
 	 */
-	public static int find_K_Diff_Pairs(int[] arr, int k) {
+	public static int count_Pairs_With_Diff_K(int[] arr, int k) {
 		
 		int n = arr.length;
 		Set<Integer> hashSet = new HashSet<>();
@@ -77,7 +77,7 @@ public class K_Diff_Pairs_In_An_Array {
 	 * 
 	 * S = O(1)
 	 */
-	public static int find_K_Diff_Pairs_2ndApproach(int[] arr, int k) {
+	public static int count_Pairs_With_Diff_K_2ndApproach(int[] arr, int k) {
 		
 		int n = arr.length;
 		Arrays.sort(arr);
