@@ -11,6 +11,10 @@ public class Find_Peak_Element {
 		System.out.println(peakIndex);
 	}
 	
+	/*
+	 * T = O(log n)
+	 * S = O(1)
+	 */
 	public static int findPeakElement_index(int[] arr) {
 
         int n = arr.length;

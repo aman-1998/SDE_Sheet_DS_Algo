@@ -1,0 +1,22 @@
+Nth Root of a Number using Binary Search (Return floor value)
+-------------------------------------------------------------
+Problem Statement: Given two numbers 'n' and 'x', find the nth root of 'x'. The nth root of a number 'x' is 
+defined as a number 'r' when raised to the power 'n' equals 'x'. If the nth root is not an integer, return its floor value.
+
+
+Example 1:
+Input Format:
+ n = 3, x = 27
+Result:
+ 3
+Explanation:
+ The cube root of 27 is equal to 3.
+
+
+Example 2:
+Input Format:
+ n = 4, x = 69
+Result:
+ 2
+Explanation:
+ The 4th root of 69 is 2.8821. So, the answer is floor of 2.882 i.e., 2

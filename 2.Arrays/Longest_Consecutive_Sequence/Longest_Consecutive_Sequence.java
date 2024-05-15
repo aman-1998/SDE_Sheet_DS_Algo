@@ -134,20 +134,17 @@ public class Longest_Consecutive_Sequence {
 		 * (1, false) ---> This means we have not yet found the length of longest consecutive sequence starting with 1
 		 */
 		
-		int tempLength = 0;
-		int maxLength = Integer.MIN_VALUE;
-		
-		for(int i = 0; i <= n-1; i++) { // T = O(n)
+		int maxLength = 0;
+		for(int i = 0; i <= n-1; i++) {
 			hashMap.put(arr[i], false);
 		}
-		int current = Integer.MIN_VALUE;
 		
-		for(int i = 0; i <= n-1; i++) { // T = O(2n) ==> Think about it logically
+		for(int i = 0; i <= n-1; i++) {
 			if(!hashMap.containsKey(arr[i]-1)) {
 				Boolean val = hashMap.get(arr[i]);
 				if(val == false) { // That means we have not yet found length of longest consecutive sequence starting with arr[i]
-					current = arr[i];
-					tempLength = 1;
+					int current = arr[i];
+					int tempLength = 1;
 					while(hashMap.containsKey(current+1)) {
 						current = current + 1;
 						tempLength++;
@@ -161,11 +158,7 @@ public class Longest_Consecutive_Sequence {
 				}
 			}
 		}
-		
-		if(maxLength < tempLength) {
-			maxLength = tempLength;
-		}
-		
+	
 		return maxLength;
 	}
 }
