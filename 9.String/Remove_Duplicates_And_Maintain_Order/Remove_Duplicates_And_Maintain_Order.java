@@ -10,6 +10,10 @@ public class Remove_Duplicates_And_Maintain_Order {
 		System.out.println(output);
 	}
 	
+	/*
+	 * T = O(n)
+	 * S = O(n) for output
+	 */
 	public static String removeDuplicates(String str) {
 		
 		int n = str.length();
