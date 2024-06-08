@@ -8,7 +8,7 @@ B where A repeats twice and B is missing.
 Examples
 Example 1:
 Input Format:  array[] = {3,1,2,5,3}
-Result: {3,4)
+Result: {3,4}
 Explanation: A = 3 , B = 4 
 Since 3 is appearing twice and 4 is missing
 

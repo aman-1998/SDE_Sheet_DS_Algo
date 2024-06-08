@@ -26,6 +26,8 @@ public class Repeating_And_Missing_Number {
 		System.out.println("Missing No. = " + repeatingAndMissing[1]);
 	}
 	
+	// T = O(n)
+	// S = O(1)
 	public static int[] repeatingAndMissingNo(int[] arr) {
 		
 		Integer n = arr.length; // Size of array
