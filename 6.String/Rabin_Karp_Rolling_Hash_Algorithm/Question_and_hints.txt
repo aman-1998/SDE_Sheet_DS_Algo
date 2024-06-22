@@ -1,0 +1,24 @@
+Rabin Karp or Rolling Hash Algorithm
+-----------------------------------------------------------
+Video Link : https://www.youtube.com/watch?v=qQ8vS2btsxI
+Vide Link : https://www.youtube.com/watch?v=BQ9E-2umSWc
+-----------------------------------------------------------
+Given two strings 'str' and 'substr'. We need to check if 'substr' is a part of 'str'.
+If 'str' contains 'substr' then return true otherwise return false.
+
+Example 1:
+
+Input: substr = "aad", str = "aabjsbhshdjkaadohdw"
+Output: true
+
+Example 2:
+
+Input: substr = "hijju", str = "jbaghhijjtousba"
+Output: false
+
+
+Constraints:
+
+1 <= substr.length, str.length <= 104
+str and substr consist of only lowercase English characters.
+

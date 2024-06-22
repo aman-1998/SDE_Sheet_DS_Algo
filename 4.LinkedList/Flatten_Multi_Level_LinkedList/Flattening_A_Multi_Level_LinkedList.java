@@ -57,7 +57,7 @@ public class Flattening_A_Multi_Level_LinkedList {
 	 * }
 	 * 
 	 * T = O(2n) => T = O(n)
-	 * S = O(n)
+	 * S = O(1)
 	 */
 	public static Node flatten(Node start) {
 		
