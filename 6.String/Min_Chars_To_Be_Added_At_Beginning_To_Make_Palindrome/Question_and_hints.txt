@@ -1,0 +1,18 @@
+Minimum Characters required to be added at the beginning to make a String Palindromic
+---------------------------------------------------------------------------------------
+Video Link : https://www.youtube.com/watch?v=j-1NLHybCSg
+---------------------------------------------------------------------------------------
+Given a string A. The only operation allowed is to insert characters at the beginning of the string.
+Find how many minimum characters are needed to be inserted to make the string a palindrome string.
+
+Example 1:
+Input: baabcd
+Output: 2
+
+Example 2:
+Input: ABC
+Output: 2
+
+Example 3: 
+Input: aacecaabcd
+Output: 3

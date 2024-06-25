@@ -12,7 +12,7 @@ public class Longest_Common_Prefix {
 	}
 	
 	/*
-	 * T = O(min(strArray) * n) where n = no. of elements in array ad min(strArray) = min length among strArray[0], strArray[1], ... strArray[n-1]
+	 * T = O(min(strArray) * n) where n = no. of elements in array and min(strArray) = min length among strArray[0], strArray[1], ... strArray[n-1]
 	 *
      * S = O(1)
 	 */

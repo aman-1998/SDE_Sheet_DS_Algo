@@ -4,7 +4,7 @@ public class ATOI_Implementation {
 
 	public static void main(String[] args) {
 		
-		String str = "-6147483648";
+		String str = "+6147ajhjbjb483648";
 		int value = myAtoi(str);
 		
 		System.out.println(value);
