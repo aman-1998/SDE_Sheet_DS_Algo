@@ -29,4 +29,32 @@ public class Move_Zeroes_To_End {
 		
 		return arr;
 	}
+	
+	public static int[] moveZeroes_2nd_approach(int[] arr) {
+		
+		int n = arr.length;
+		int j = 0;
+		
+		// Move j to first index where zero appears
+		for(int k = 0; k <= n-1; k++) {
+			if(arr[k] == 0) {
+				j = k;
+				break;
+			}
+		}
+		
+		// i always points to zero
+		int i = j;
+		while(j != n) {
+			if(arr[j] != 0) { // if arr[j] is not zero then swap
+				int temp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = temp;
+				i++;
+			}
+			j++;
+		}
+		
+		return arr;
+	}
 }

@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,17 +10,20 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 	public static void main(String[] args) {
 		
 		//String str = "aac";
-		//int maxLength = longest_subarray_without_repeating_better_BF(str);
+		//int maxLength = longest_subarray_without_repeating_Worst_BF(str);
+		//int maxLength = longest_subarray_without_repeating_BF(str);
 		//int maxLength = longest_subarray_without_repeating_better(str);
 		//int maxLength = longest_subarray_without_repeating(str);
 		
 		//String str = "Hello";
-		//int maxLength = longest_subarray_without_repeating_better_BF(str);
+		//int maxLength = longest_subarray_without_repeating_Worst_BF(str);
+		//int maxLength = longest_subarray_without_repeating_BF(str);
 		//int maxLength = longest_subarray_without_repeating_better(str);
 		//int maxLength = longest_subarray_without_repeating(str);
 		
 		String str = "aabcdceadecb";
-		//int maxLength = longest_subarray_without_repeating_better_BF(str);
+		//int maxLength = longest_subarray_without_repeating_Worst_BF(str);
+		//int maxLength = longest_subarray_without_repeating_BF(str);
 		//int maxLength = longest_subarray_without_repeating_better(str);
 		int maxLength = longest_subarray_without_repeating(str);
 		
@@ -28,12 +31,12 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 	}
 	
 	/*
-	 * Brute Force
+	 * Worst Brute Force
 	 * 
 	 * T = O(n^3)
 	 * S = O(n)
 	 */
-	private static int longest_subarray_without_repeating_better_BF(String str) {
+	private static int longest_subarray_without_repeating_Worst_BF(String str) {
 		
 		int n = str.length();
 		int maxLength = Integer.MIN_VALUE;
@@ -58,6 +61,43 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 		}
 		
 		return maxLength;
+	}
+	
+	/*
+	 * Better Brute Force
+	 * 
+	 * T = O(n^2)
+	 * S = O(n)
+	 */
+	private static int longest_subarray_without_repeating_BF(String str) {
+		
+		int n = str.length();
+		int maxLen = Integer.MIN_VALUE;
+		
+		for(int i = 0; i <= n-1; i++) {
+			
+			Set<Character> hSet = new HashSet<>();
+			int count = 0;
+			
+			for(int j = i; j <= n-1; j++) {
+				
+				if(!hSet.contains(str.charAt(j))) {
+					hSet.add(str.charAt(j));
+					count++;
+				} else {
+					if(count > maxLen) {
+						maxLen = count;
+					}
+					break;
+				}
+			}
+			
+			if(count > maxLen) {
+				maxLen = count;
+			}
+		}
+		
+		return maxLen;
 	}
 	
 	/*

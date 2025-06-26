@@ -42,6 +42,21 @@ public class Rabin_Karp_Algorithm {
 			}
 		}
 		
+		
+		//for(int i = 0; i <= n-m; i++) {
+		//	boolean noMatch = false;
+		//	for(int j = 0; j <= m-1; j++) {
+		//		if(substr.charAt(j) != str.charAt(i+j)) {
+		//			noMatch = true;
+		//			break;
+		//		}
+		//	}
+		//	
+		//	if(noMatch == false) {
+		//		return true;
+		//	}
+		//}
+		
 		return false;
 	}
 	

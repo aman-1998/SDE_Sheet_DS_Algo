@@ -27,6 +27,14 @@ public class Longest_Subarray_With_Sum_Divisible_By_K {
 	 */
 	
 	/*
+	 * When the prefix sum up to index j and prefix sum up to index i (where i < j) give 
+	 * the same remainder modulo k, then the sum of the subarray between them (i+1…j) is 
+	 * divisible by k
+	 *
+	 * If (S 0 to i)%k == (S 0 to j)%k  , where i < java
+	 * then (S i+1 to j)%k == 0
+	 *
+	 *
 	 * T = O(n) * O(hashMap_search) = O(n)
 	 * S = O(n)
 	 */

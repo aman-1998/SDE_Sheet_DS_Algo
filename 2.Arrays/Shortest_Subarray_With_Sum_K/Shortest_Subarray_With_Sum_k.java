@@ -85,7 +85,7 @@ public class Shortest_Subarray_With_Sum_k {
 			if(sum == k) {
 				int count = i + 1;
 				if(count < minLength) {
-					minLength = i + 1;
+					minLength = count;
 				}
 			}
 			

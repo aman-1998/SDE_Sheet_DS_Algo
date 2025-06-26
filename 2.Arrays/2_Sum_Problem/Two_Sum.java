@@ -111,7 +111,7 @@ public class Two_Sum {
 	// Original array is not altered here. So, indices can be found
 	// Using HashMap and HashSet
 	// T = O(n) * O(hashMap_get + hashMap_put) + O(n) = O(n)
-	// S = (n) + O(n/2 * 2) = O(n)
+	// S = O(n) + O(n/2 * 2) = O(n)
 	private static List<List<Integer>> twoSum_4(int[] arr, int target) {
 		
 		int n = arr.length;
