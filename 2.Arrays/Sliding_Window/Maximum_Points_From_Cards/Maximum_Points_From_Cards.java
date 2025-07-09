@@ -15,6 +15,10 @@ public class Maximum_Points_From_Cards {
 		System.out.println(maxscore);
 	}
 	
+	/*
+	 * T = O(k)
+	 * S = O(1)
+	 */
 	public static int maxScore(int[] arr, int k) {
 		
 		int n = arr.length;

@@ -21,3 +21,6 @@ Example 3:
 Input Format:  N = 10, nums[] = {4,4,2,4,3,4,4,3,2,4}
 
 Result: 4
+
+Reference NeetCode (it is better): https://www.youtube.com/watch?v=7pnhv842keE
+Reference Striver: https://www.youtube.com/watch?v=nP_ns3uSh80 

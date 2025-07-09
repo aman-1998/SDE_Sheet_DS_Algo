@@ -36,11 +36,11 @@ public class Move_Zeroes_To_End {
 		int j = 0;
 		
 		// Move j to first index where zero appears
-		for(int k = 0; k <= n-1; k++) {
-			if(arr[k] == 0) {
-				j = k;
+		while(j < n) {
+			if(arr[j] == 0) {
 				break;
 			}
+			j++;
 		}
 		
 		// i always points to zero

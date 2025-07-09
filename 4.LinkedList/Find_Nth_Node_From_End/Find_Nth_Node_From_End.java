@@ -2,25 +2,22 @@ package algorithms.part1;
 
 import algorithms.utility.ListNode;
 
-public class Remove_Nth_Node_From_End_Of_LinkedList {
+public class Find_Nth_Node_From_End {
 	
 	public static void main(String[] args) {
 		
 	}
 	
-	private static ListNode removeNthFromEnd(ListNode start, int n) {
-        
+	private static int getNthFromEnd(ListNode start, int n) {
+        // Your code here
         if(start == null) {
-            return start;
+            return -1;
         }
         
         ListNode f = start;
-        for(int i = 1; i <= n; i++) {
+        for(int i = 1; i <= n-1; i++) {
             if(f.link == null) {
-            	if(i == n) {
-            		start = start.link;
-            	}
-                return start;
+                return -1;
             }
             f = f.link;
         }
@@ -31,8 +28,6 @@ public class Remove_Nth_Node_From_End_Of_LinkedList {
             f = f.link;
         }
         
-        s.link = s.link.link;
-        
-        return start;
+        return s.data;
     }
 }

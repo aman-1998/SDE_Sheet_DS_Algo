@@ -21,6 +21,7 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 		//int maxLength = longest_subarray_without_repeating_better(str);
 		//int maxLength = longest_subarray_without_repeating(str);
 		
+		//String str = "abcaabcdba";
 		String str = "aabcdceadecb";
 		//int maxLength = longest_subarray_without_repeating_Worst_BF(str);
 		//int maxLength = longest_subarray_without_repeating_BF(str);
@@ -85,9 +86,6 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 					hSet.add(str.charAt(j));
 					count++;
 				} else {
-					if(count > maxLen) {
-						maxLen = count;
-					}
 					break;
 				}
 			}
@@ -109,37 +107,27 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 	private static int longest_subarray_without_repeating_better(String str) {
 		
 		int n = str.length();
-		Set<Character> hashSet = new HashSet<>();
-		int l = 0;
-		int r = 0;
-		int maxLength = Integer.MIN_VALUE;
+		Set<Character> hSet = new HashSet<>();
+		int maxLen = 0;
+		
+		int l = 0, r = 0;
 		
 		while(r < n) {
-			
-			if(hashSet.contains(str.charAt(r))) {
-				
-				int count = r - l;
-				if(count > maxLength) {
-					maxLength = count;
+			if(!hSet.contains(str.charAt(r))) {
+				int len = r - l + 1;
+				if(len > maxLen) {
+					maxLen = len;
 				}
 				
-				do {
-					hashSet.remove(str.charAt(l));
-					l++;
-				} while(hashSet.contains(str.charAt(r)));
-				
-				hashSet.add(str.charAt(r));
+				hSet.add(str.charAt(r));
+				r++;
+			} else {
+				hSet.remove(str.charAt(l));
+				l++;
 			}
-			hashSet.add(str.charAt(r));
-			r++;
-		}
-
-        int length = r - l;
-		if(length > maxLength) {
-			maxLength = length;
 		}
 		
-		return maxLength;
+		return maxLen;
 	}
 	
 	/*
@@ -151,33 +139,28 @@ public class Longest_Subarray_With_Non_Repeating_Characters {
 	private static int longest_subarray_without_repeating(String str) {
 		
 		int n = str.length();
-		Map<Character, Integer> hashMap = new HashMap<>();
-		int l = 0;
-		int r = 0;
-		int maxLength = Integer.MIN_VALUE;
+		Map<Character, Integer> hMap = new HashMap<>();
+		int maxLen = 0;
+		
+		int l = 0, r = 0;
 		
 		while(r < n) {
-			
-			Integer index = hashMap.get(str.charAt(r));
+			Integer index = hMap.get(str.charAt(r));
 			if(index != null) {
-				if(l <= index && index < r) {
-					int length = r - l;
-					if(length > maxLength) {
-						maxLength = length;
-					}
-					hashMap.put(str.charAt(r), r);
+				if(index >= l && index < r) {
 					l = index + 1;
 				}
 			}
-			hashMap.put(str.charAt(r), r);
+			
+			int len = r - l + 1;
+			if(len > maxLen) {
+				maxLen = len;
+			}
+			hMap.put(str.charAt(r), r);
 			r++;
 		}
-
-        int length = r - l;
-		if(length > maxLength) {
-			maxLength = length;
-		}
 		
-		return maxLength == Integer.MIN_VALUE ? 1 : maxLength;
+		return maxLen;
 	}
+	
 }

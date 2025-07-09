@@ -30,7 +30,7 @@ public class Number_Of_Subarrays_With_Sum_Divisible_By_K {
 	public int subarraysDivByK(int[] arr, int k) {
 		
         int n = arr.length;
-		Map<Integer, Integer> hashMap = new HashMap<>(); // (sum , no. of times we have seen this sum) = (sum ,count)
+		Map<Integer, Integer> hashMap = new HashMap<>(); // (sum%k , no. of times we have seen this remainder) = (remainder ,count)
 		int sum = 0;
 		int count = 0;
 		

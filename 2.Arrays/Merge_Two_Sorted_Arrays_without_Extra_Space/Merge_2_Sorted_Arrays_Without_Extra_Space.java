@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import java.util.Arrays;
 
@@ -32,9 +32,13 @@ public class Merge_2_Sorted_Arrays_Without_Extra_Space {
 				int temp = left[i];
 				left[i] = right[j];
 				right[j] = temp;
+				
+				i--;
+				j++;
+				
+			} else {
+				break;
 			}
-			i--;
-			j++;
 		}
 		
 		Arrays.sort(left); // O(mlog m)

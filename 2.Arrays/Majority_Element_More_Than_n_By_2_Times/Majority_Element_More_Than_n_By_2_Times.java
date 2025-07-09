@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,8 +35,9 @@ Result: 4
 public class Majority_Element_More_Than_n_By_2_Times {
 	 
 	public static void main(String[] args) {
-		int[] arr = {6, 4, 1, 1, 4, 1, 1};
-		int element = majorityElementMoreThan_n_by_2_times_2(arr);
+		int[] arr = {4, 6, 7, 6, 7, 7, 7, 8, 7};
+		//int[] arr = {3, 2, 3};
+		int element = majorityElement_byNeetCode(arr);
 		if(element != Integer.MIN_VALUE) {
 			System.out.println("Majority element = " + element);
 		} else {
@@ -58,6 +59,7 @@ public class Majority_Element_More_Than_n_By_2_Times {
 			}
 		}
 		
+		// Iterating over the hashmap
 		Iterator<Map.Entry<Integer, Integer>> ite = map.entrySet().iterator();
 		while(ite.hasNext()) {
 			Map.Entry<Integer, Integer> entry = ite.next();
@@ -69,11 +71,32 @@ public class Majority_Element_More_Than_n_By_2_Times {
 		return Integer.MIN_VALUE;
 	}
 	
+	// Better Approach
+	// T = O(n)
+	// S = O(n)
+	private static int majorityElementMoreThan_n_by_2_times_2(int[] arr) {
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		int n = arr.length;
+		for(int i = 0; i < n; i++) {
+			if(map.get(arr[i]) == null) {
+				map.put(arr[i], 1);
+			} else {
+				map.put(arr[i], map.get(arr[i])+1);
+				if(map.get(arr[i]) > n/2) {
+					return arr[i];
+				}
+			}
+		}
+		
+		return Integer.MIN_VALUE;
+	}
+	
 	// Best Approach
 	// Moore's Voting Algorithm
 	// T = O(n)
 	// S = O(1)
-	private static int majorityElementMoreThan_n_by_2_times_2(int[] arr) {
+	private static int majorityElementMoreThan_n_by_2_times_3(int[] arr) {
 		
 		int n = arr.length;
 		int element = Integer.MIN_VALUE; // The element which is not present in the array
@@ -91,5 +114,58 @@ public class Majority_Element_More_Than_n_By_2_Times {
 		}
 		
 		return element;
+	}
+	
+	/*
+	 * Best Approach : By Neet Code (Easy to understand)
+	 * 
+	 * Moore's Voting Algorithm
+	 * T = O(n)
+	 * S = O(1)
+	 */
+	private static int majorityElement_byNeetCode(int[] arr) {
+		
+		int n = arr.length;
+		Map<Integer, Integer> hMap = new HashMap<>();
+		
+		for(int i = 0; i <= n-1; i++) {
+			Integer count = hMap.get(arr[i]);
+			if(count != null) {
+				hMap.put(arr[i], count + 1);
+			} else {
+				if(hMap.size() == 1) {
+					int element1=0, count1=0;
+                    for(Map.Entry<Integer, Integer> entry: hMap.entrySet()) {
+                    	element1 = entry.getKey();
+                    	count1 = entry.getValue();
+                    }
+                    
+                    if(count1 == 1) {
+                    	hMap.remove(element1);
+                    } else {
+                    	hMap.put(element1, count1 - 1);
+                    }
+				} else {
+					hMap.put(arr[i], 1);
+				}
+			}
+		}
+		
+		Integer possibleResult = Integer.MIN_VALUE; // Default value if majority element does not exist
+		for(Map.Entry<Integer, Integer> entry: hMap.entrySet()) {
+			possibleResult = entry.getKey();
+        }
+		
+		int count = 0;
+		for(int i = 0; i <= n-1; i++) {
+			if(arr[i] == possibleResult) {
+				count++;
+				if(count > n/2) {
+					return possibleResult;
+				}
+			}
+		}
+		
+		return possibleResult;
 	}
 }
