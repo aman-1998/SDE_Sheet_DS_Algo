@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,7 +18,7 @@ public class Flattening_A_Multi_Level_LinkedList {
 	 * S = O(n)
 	 * 
 	 */
-	public static Node flattenUsingQueue(Node start) {
+	public static Node flattenUsingQueue_1st(Node start) {
 		
 		if(start == null) {
 			return null;
@@ -45,6 +45,41 @@ public class Flattening_A_Multi_Level_LinkedList {
 		
 		return start;
 	}
+	
+	/*
+	 * Using Queue
+	 * 
+	 * T = O(n)
+	 * S = O(n)
+	 * 
+	 */
+	public static Node flattenUsingQueue_2nd(Node root) {
+        // code here
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        
+        Node last = null;
+        
+        while(!queue.isEmpty()) {
+            Node t = queue.remove();
+            while(t != null) {
+                if(last == null) {
+                    last = t;
+                } else {
+                    last.next = t;
+					last = last.next;
+                }
+                
+                if(t.down != null) {
+                    queue.add(t.down);
+                }
+                
+                t = t.next;
+            }
+        }
+        
+        return root;
+    }
 	
 	/*
 	 * Best approach
@@ -76,12 +111,15 @@ public class Flattening_A_Multi_Level_LinkedList {
 			
 			while(curr.down == null) {
 				curr = curr.next;
+				
+				if(curr == null) {
+					return start;
+				}
 			}
 			
-			if(curr != null) {
-				last.next = curr.down;
-				curr = curr.next;
-			}
+			last.next = curr.down;
+			curr = curr.next;
+			
 		}
 		
 		return start;

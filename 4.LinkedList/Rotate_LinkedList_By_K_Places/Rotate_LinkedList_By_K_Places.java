@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.part1;
 
 import algorithms.utility.ListNode;
 
@@ -10,14 +10,7 @@ public class Rotate_LinkedList_By_K_Places {
 	
 	/*
 	 * Time complexity:
-     * If k = 0 then T = O(1)
-     * If k < n then T = O(k) + O(n - k)
-     * If k > n and k%n != 0 then T = O(n + k%n) + O(n - k%n)
-     * If k > n and k%n != 0 then T = O(n)
-     * If k == n then T = O(n)
-     * So, the worst case here is when k > n and k%n != 0.
-     * Hence, T = O(n + k%n) + O(n - k%n)
-     * Approximately, T = O(n)
+     * T = O(2n) = O(n)
      * 
      * Space complexity:
      * S = O(1)
@@ -25,40 +18,64 @@ public class Rotate_LinkedList_By_K_Places {
 	 */
 	public ListNode rotateRight(ListNode start, int k) {
 
-        if(k == 0 || start == null) {
+		if(start == null) {
             return start;
         }
-        
-        ListNode l = start;
-        ListNode r = start;
-        int count = 0;
-        for(int i = 1; i <= k; i++) { // T = O(n + k%n)
-            if(r == null) {
-                
-                k = k % count;
-                if(k == 0) {
-                    return start;
-                }
-                i = 1;
-                r = start;
-            }
-            r = r.link;
+
+        int count = 1;
+        ListNode t = start;
+        while(t.link != null) { // Find length
+            t = t.link;
             count++;
         }
 
-        if(r == null) {
+        k = k % count;
+
+        if(k == 0) {
             return start;
         }
 
-        while(r.link != null) { // T = O(n - k%n)
-            r = r.link;
-            l = l.link;
+        ListNode fast = start;
+        for(int i = 1; i <= k; i++) {
+            fast = fast.link;
         }
 
-        r.link = start;
-        start = l.link;
-        l.link = null;
+        ListNode slow = start;
+        while(fast.link != null) {
+            slow = slow.link;
+            fast = fast.link;
+        } // Find k+1 th node from end 
 
+        fast.link = start;
+        start = slow.link;
+        slow.link = null;
         return start;
+    }
+	
+	/*
+	 * T = O(3n) = O(n)  [But it can be done in O(2n) as well.]
+	 * S = O(1)
+	 * 
+	 */
+	public ListNode rotateLeft(ListNode start, int k) {
+
+		if(start == null) {
+            return start;
+        }
+
+        int count = 1;
+        ListNode t = start;
+        while(t.link != null) { // Find length
+            t = t.link;
+            count++;
+        }
+        
+        k = k % count;
+        
+        /*
+         * Rotating k elements from right is equals to 
+         * rotating count-k elements from left
+         */
+        return rotateRight(start, count-k);
     }
 }
