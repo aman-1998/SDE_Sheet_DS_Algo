@@ -30,13 +30,15 @@ public class Lower_Bound {
 		
 		while(left <= right) {
 			int mid = (left + right)/2;
-			if(arr[mid] >= target) {
+			if(arr[mid] > target) {
 				if(mid < index) {
 					index = mid;
 				}
 				right = mid-1;
-			} else {
+			} else if(arr[mid] < target) {
 				left = mid+1;
+			} else {
+				return mid;
 			}
 		}
 		

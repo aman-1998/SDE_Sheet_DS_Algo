@@ -1,5 +1,7 @@
 package algorithms.part3;
 
+// video link : https://www.youtube.com/watch?v=j-1NLHybCSg
+
 public class Min_Chars_To_Be_Added_At_Beginning_To_Make_Palindrome {
 	
 	public static void main(String[] args) {
