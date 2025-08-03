@@ -6,7 +6,7 @@ import java.util.Queue;
 public class Stack_Using_Two_Queues {
 	
 	public static void main(String[] args) {
-		Stack stack = new Stack();
+		MyStack stack = new MyStack();
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);

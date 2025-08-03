@@ -37,6 +37,6 @@ public class Max_Num_Of_Meetings_That_Can_Be_Attended {
 			}
 		}
 		
-		return count;
+		return count; // no. of no overlapping intervals
 	}
 }

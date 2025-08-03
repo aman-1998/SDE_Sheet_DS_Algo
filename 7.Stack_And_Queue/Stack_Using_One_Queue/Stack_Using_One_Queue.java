@@ -7,7 +7,7 @@ public class Stack_Using_One_Queue {
 	
 	public static void main(String[] args) {
 		
-		Stack stack = new Stack();
+		DemoStack stack = new DemoStack();
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
@@ -60,7 +60,7 @@ public class Stack_Using_One_Queue {
 }
 
 
-class Stack {
+class DemoStack {
 	
 	Queue<Integer> queue = new LinkedList<>();
 	
