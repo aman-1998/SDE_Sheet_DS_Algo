@@ -3,7 +3,7 @@ package algorithms.part4;
 import java.util.Stack;
 import java.util.stream.IntStream;
 
-public class Next_Greater_Element_1 {
+public class Next_Greater_Element_NGE_1 {
 	
 	public static void main(String[] args) {
 		
@@ -59,10 +59,9 @@ public class Next_Greater_Element_1 {
 		Stack<Integer> stack = new Stack<>();
 		
 		for(int i = n-1; i >= 0; i--) {
-			if(stack.isEmpty()) {
-				nge[i] = -1;
-			} else {
-				Integer val = stack.peek();
+			int val = -1;
+			if(!stack.isEmpty()) {
+				val = stack.peek();
 				while(val <= arr[i]) {
 					stack.pop();
 					if(stack.isEmpty()) {
@@ -71,8 +70,8 @@ public class Next_Greater_Element_1 {
 					}
 					val = stack.peek();
 				}
-				nge[i] = val;
 			}
+			nge[i] = val;
 			stack.push(arr[i]);
 		}
 		

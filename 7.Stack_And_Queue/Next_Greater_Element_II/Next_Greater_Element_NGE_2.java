@@ -3,7 +3,7 @@ package algorithms.part4;
 import java.util.Stack;
 import java.util.stream.IntStream;
 
-public class Next_Greater_Element_2 {
+public class Next_Greater_Element_NGE_2 {
 	
 public static void main(String[] args) {
 		
