@@ -1,4 +1,4 @@
-package algorithms.part4;
+package practice.dsa.sheet.part4;
 
 import java.util.Stack;
 
@@ -25,6 +25,10 @@ public class Sort_Stack_Using_Recursion {
 		System.out.println(stack.pop());
 	}
 	
+	/*
+	 * T = O(n*n)
+	 * S = O(n)
+	 */
 	public static Stack<Integer> sortStack(Stack<Integer> stack) {
 		if(stack.isEmpty()) {
 			return stack;

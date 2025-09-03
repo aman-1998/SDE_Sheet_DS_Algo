@@ -48,7 +48,7 @@ public class Remove_K_Digits {
 	}
 	
 	/*
-	 * T = O(3n + k) = O(n + k)
+	 * T = O(3n - k) = O(n - k)
 	 * S = O(n)
 	 */
 	public static String removeKdigits(String num, int k) {
@@ -81,7 +81,7 @@ public class Remove_K_Digits {
 		}
 		
 		StringBuilder result = new StringBuilder();
-		while(!stack.isEmpty()) { // T = O(n)
+		while(!stack.isEmpty()) { // T = O(n-k)
 			result = result.append(stack.pop());
 		}
 		
@@ -93,7 +93,7 @@ public class Remove_K_Digits {
 			}
 		}
 		
-		result.reverse(); // T = O(n-y)
+		result.reverse(); // T = O(n-k-y)
 		
 		if(result.length() == 0) {
 			return "0";

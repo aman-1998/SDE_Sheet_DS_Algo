@@ -1,7 +1,9 @@
 Painters Partition Problem
 ----------------------------
 
-You are given A painters and an array C of N integers where C[i] denotes the length of the ith board. Each painter takes B units of time to paint 1 unit of board. You must assign boards to painters such that:
+You are given A painters and an array C of N integers where C[i] denotes the length 
+of the ith board. Each painter takes B units of time to paint 1 unit of board. You must 
+assign boards to painters such that:
 
 Each painter paints only contiguous segments of boards.
 No board can be split between painters.

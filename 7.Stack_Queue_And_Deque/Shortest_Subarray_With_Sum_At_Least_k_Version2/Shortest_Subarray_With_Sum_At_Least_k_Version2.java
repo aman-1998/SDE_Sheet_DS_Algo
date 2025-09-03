@@ -1,4 +1,4 @@
-package algorithms;
+package practice.dsa.sheet.part4;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -11,6 +11,10 @@ class Pair1 {
 	public Pair1(long cumulativeSum, int index) {
 		this.cumulativeSum = cumulativeSum;
 		this.index = index;
+	}
+	
+	public String toString() {
+		return "(" + cumulativeSum + ", " + index + ")";
 	}
 }
 
@@ -25,9 +29,11 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version2 {
 		//int[] arr = {1, 4, 45, 6, 0, 19};
 		//int minLength = shortest_subarray_with_sum_at_least_k(arr, 51);
 		
-		int[] arr = {2, 7, 3, -8, 4, 10};
+		//int[] arr = {2, 7, 3, -8, 4, 10};
 		//int minLength = shortest_subarray_with_sum_at_least_k_BF(arr, 12);
-		int minLength = shortest_subarray_with_sum_at_least_k(arr, 12);
+		
+		int[] arr = {-28,81,-20,28,-29};
+		int minLength = shortest_subarray_with_sum_at_least_k(arr, 89);
 		
 		System.out.println(minLength);
 	}
@@ -88,6 +94,7 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version2 {
 				}
 			}
 			
+			// Trying to Compress the subarray 
 			Pair1 discarded = null;
 			while(!deque.isEmpty() && sum - deque.getFirst().cumulativeSum >= k) {
 				discarded = deque.getFirst();
@@ -95,17 +102,19 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version2 {
 			}
 			
 			if(discarded != null) {
-				int count = i - discarded.index;
+				int count = i - discarded.index; // Length of subarray after discarding unnecessary elements
 				if(count < minLength) {
 					minLength = count;
 				}
 			}
 			
+			// Ensures monotonic increasing order
 			while(!deque.isEmpty() && deque.getLast().cumulativeSum >= sum) {
 				deque.removeLast();
 			}
-			deque.add(new Pair1(sum, i));
+			deque.add(new Pair1(sum, i)); //  Add in monotonic increasing order
 		}
 		return minLength == Integer.MAX_VALUE ? 0 : minLength;
 	}
+	
 }

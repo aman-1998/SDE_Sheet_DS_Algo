@@ -1,4 +1,4 @@
-package algorithms.part4;
+package practice.dsa.sheet.part4;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -23,7 +23,7 @@ public class Sliding_Window_Maximum {
 		
 		System.out.println();
 		
-		res = maxSlidingWindow(arr, k);
+		res = slidingWindowMax(arr, k);
 		
 		Arrays.stream(res).boxed().forEach(t -> System.out.print(t + " "));
 	}
@@ -62,7 +62,7 @@ public class Sliding_Window_Maximum {
 	 * T = O(2n)
 	 * S = O(n-k) + O(k)  (Deque can have maximum k elements at any moment)
 	 */
-	public static int[] maxSlidingWindow(int[] arr, int k) {
+	public static int[] slidingWindowMax(int[] arr, int k) {
         
 		if(k == 1) {
 			return arr;

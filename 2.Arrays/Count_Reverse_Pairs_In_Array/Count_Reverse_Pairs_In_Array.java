@@ -161,7 +161,7 @@ public class Count_Reverse_Pairs_In_Array {
 			
 			if(left[i] > 2* right[j]) {
 				if(i <= left.length - 2) {
-					countReversePair += (q - p + 1) - i;
+					countReversePair += (q - p - i) + 1;
 					// Note: q-p+1 is second last index in left array
 				}
 				j++;

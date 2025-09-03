@@ -71,4 +71,26 @@ public class Find_Duplicate_In_Array_Of_N_plus_1_Size {
 		
 		return t;
 	}
+	
+	/*
+	 * 2nd approach
+	 * 
+	 * T = O(n)
+	 * S = O(1)
+	 * 
+	 */
+	public int findDuplicate(int[] arr) {
+
+        int n = arr.length;
+		
+		for(int i = 0; i <= n-1; i++) {
+			if(arr[Math.abs(arr[i])] > 0) {
+				arr[Math.abs(arr[i])] = -1 * arr[Math.abs(arr[i])];
+			} else {
+				return Math.abs(arr[i]);
+			}
+		}
+
+        return -1;
+    }
 }

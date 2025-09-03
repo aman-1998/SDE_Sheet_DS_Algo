@@ -37,6 +37,19 @@ public static void main(String[] args) {
 		int l = Math.max(0, k-n2);
 		int r = Math.min(k, n1);
 		
+		/*
+		if(n2 >= k) {
+			l = 0;
+		} else {
+			l = k - n2;
+		}
+		
+		if(n1 >= k) {
+			r = k;
+		} else {
+			r = n1;
+		}*/
+		
 		while(l <= r) {
 			int mid1 = (l+r)/2;
 			int mid2 = leftArrSize - mid1;

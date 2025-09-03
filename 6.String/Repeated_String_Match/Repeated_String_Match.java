@@ -26,7 +26,8 @@ public class Repeated_String_Match {
 		int n = b.length();
 		
 		String original = new String(a);
-		for(int i = 1; i <= n/m+2; i++) {
+		//for(int i = 1; i <= n/m+2; i++) {
+		for(int i = 1; i <= Math.ceil((double)(m+n-1)/(double)m); i++) {
 			
 			if(contains(a, b) == true) {
 				return i;
