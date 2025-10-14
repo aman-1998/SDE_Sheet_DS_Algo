@@ -1,4 +1,4 @@
-package algorithms;
+package practice.dsa.sheet.part1;
 
 public class Maximum_Points_From_Cards {
 	
@@ -15,10 +15,6 @@ public class Maximum_Points_From_Cards {
 		System.out.println(maxscore);
 	}
 	
-	/*
-	 * T = O(k)
-	 * S = O(1)
-	 */
 	public static int maxScore(int[] arr, int k) {
 		
 		int n = arr.length;
@@ -45,4 +41,27 @@ public class Maximum_Points_From_Cards {
 		
 		return maxScore;
 	}
+	
+	public int maxScore_2nd_approach(int[] arr, int k) {
+
+        int n = arr.length;
+        int sum = 0;
+        for(int i = 0; i <= k-1; i++) {
+            sum = sum + arr[i];
+        }
+
+        int max = sum;
+        int j = n-1;
+
+        for(int i = k-1; i >= 0; i--) {
+            sum = sum - arr[i];
+            sum = sum + arr[j];
+            j--;
+            if(sum > max) {
+                max = sum;
+            }
+        }
+
+        return max;
+    }
 }

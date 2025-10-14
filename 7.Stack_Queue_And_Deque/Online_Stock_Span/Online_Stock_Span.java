@@ -8,7 +8,7 @@ public class Online_Stock_Span {
 	
 	public static void main(String[] args) {
 		
-		StockSpanner stockSpanner = new StockSpanner();
+		StockSpanner1 stockSpanner = new StockSpanner1();
 		System.out.println(stockSpanner.next(7));
 		System.out.println(stockSpanner.next(2));
 		System.out.println(stockSpanner.next(1));
@@ -24,7 +24,7 @@ public class Online_Stock_Span {
 
 /*
  * T = O(2n)
- * S = O()
+ * S = O(2n)
  */
 class StockSpanner {
 	
@@ -54,5 +54,40 @@ class StockSpanner {
     	stack.push(priceList.size()-1);
     	
     	return pgeList.size()-1 - pgeList.get(pgeList.size()-1);
+    }
+    
+}
+
+
+/*
+ * T = O(2n)
+ * S = O(2n)
+ */
+class StockSpanner1 {
+	
+	private Stack<Integer> stack = new Stack<>();
+	
+	private List<Integer> priceList = new ArrayList<>();
+	
+	public int next(int price) {
+    	
+		priceList.add(price);
+		
+		int index = -1;
+		
+		if(!stack.isEmpty()) {
+			index = stack.peek();
+			while(price >= priceList.get(index)) {
+				stack.pop();
+				if(stack.isEmpty()) {
+					index = -1;
+					break;
+				}
+				index = stack.peek();
+			}
+		}
+		
+		stack.push(priceList.size() - 1);
+		return priceList.size() - 1 - index;
     }
 }

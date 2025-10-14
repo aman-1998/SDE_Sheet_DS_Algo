@@ -22,7 +22,7 @@ public class Max_Area_Of_Cake_After_Cuts {
 	 * 
 	 * S = O(1)
 	 */
-	public static int maxArea(int h, int w, int[] horizontalCuts, int[] verticalCuts) {
+	public static int maxArea(int h, int w, int[]  horizontalCuts, int[] verticalCuts) {
 
         long maxHorizontalDiff = maxDiff(horizontalCuts, h);
 		long maxVerticalDiff = maxDiff(verticalCuts, w);
