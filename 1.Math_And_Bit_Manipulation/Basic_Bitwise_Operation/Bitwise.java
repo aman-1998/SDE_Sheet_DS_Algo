@@ -24,11 +24,9 @@ public class Bitwise
 		//We want to clear nth bit from right side (use of &)
 		System.out.print("\nEnter the position which you want to clear: ");
 		int n = in.nextInt();
-		int temp1 = -2 << (n-1);
-		int temp2 = ((1 << 31) - 1) >> (32-n);
-		int mask = temp1 | temp2;
+		int mask = 1 << (32 - n);
 		System.out.println("\nmask = "+ob.integerToBinaryPrint(mask));
-		int modified_input = input & mask;
+		int modified_input = input & ~mask;
 		System.out.println("Modified input = "+ob.integerToBinaryPrint(modified_input)+" = "+modified_input);
 		
 		//We want to know whether nth bit is set or clear (use of &)
@@ -63,8 +61,8 @@ public class Bitwise
 		System.out.println("Decrypted value = "+decrypted_value);
 		
 		//XOR of two same integer is 0
-		temp1 = 141421;
-		temp2 = 141421;
+		int temp1 = 141421;
+		int temp2 = 141421;
 		int res = temp1 ^ temp2;
 		System.out.println("XOR of two same integer = "+res);
 		

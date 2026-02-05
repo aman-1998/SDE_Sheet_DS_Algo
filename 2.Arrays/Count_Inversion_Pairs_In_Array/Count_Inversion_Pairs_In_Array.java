@@ -147,7 +147,7 @@ public class Count_Inversion_Pairs_In_Array {
 				// Additional counting inversion-pair logic
 				if(i <= left.length -2) {
 					countInversionPair = countInversionPair + (q - p - i) + 1;
-					// Note: q-p+1 is second last index in left array
+					// Note: q-p is second last index in left array
 				}
 				arr[k] = right[j];
 				j++;

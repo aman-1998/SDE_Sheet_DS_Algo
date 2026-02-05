@@ -2,7 +2,9 @@ package practice.dsa.sheet.part1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Prime_Factorization_Of_A_Number {
 	
@@ -10,7 +12,7 @@ public class Prime_Factorization_Of_A_Number {
 		
 		int n = 30;
 		
-		List<Integer> res = primeFactorization_1st_Approach(n);
+		List<Integer> res = primeFactorization_4th_Approach(n);
 		
 		res.stream().forEach(t -> System.out.println(t + " "));
 	}
@@ -102,4 +104,30 @@ public class Prime_Factorization_Of_A_Number {
 		
 		return res;
 	}
+
+	// T = O(sqrt(n) * sqrt(n)) +  O(x) = O(n)
+	// S = O(1)
+	public static List<Integer> primeFactorization_4th_Approach(int n) {
+		Set<Integer> set = new HashSet<>();
+		for(int i = 2; i*i <= n; i++) {
+			if(n%i == 0) {
+				if(isPrime(i)) {
+					set.add(i);
+				}
+
+				int q = n/i;
+				if(isPrime(q)) {
+					set.add(q);
+				}
+			}
+		}
+
+		if(isPrime(n)) {
+    		set.add(n);
+    	}
+
+		List<Integer> res = new ArrayList<>(set);
+		return res;
+	}
+
 }

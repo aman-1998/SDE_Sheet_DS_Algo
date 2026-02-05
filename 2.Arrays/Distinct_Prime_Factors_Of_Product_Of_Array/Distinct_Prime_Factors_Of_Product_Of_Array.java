@@ -8,7 +8,8 @@ public class Distinct_Prime_Factors_Of_Product_Of_Array {
 	
 	public static void main(String[] args) {
 		
-		int[] arr = {2, 20, 16, 2, 6, 13, 7, 9};
+		//int[] arr = {2, 20, 16, 2, 6, 13, 7, 9};
+		int[] arr = {2, 4, 8, 16};
 		int res = distinctPrimeFactors(arr);
 		
 		System.out.println(res);
@@ -59,10 +60,8 @@ public class Distinct_Prime_Factors_Of_Product_Of_Array {
 				}
 				
 				int q = n/i;
-				if(n%q == 0) {
-					if(isPrime(q)) {
-						set.add(q);
-					}
+				if(isPrime(q)) {
+					set.add(q);
 				}
 			}
 		}
@@ -105,4 +104,5 @@ public class Distinct_Prime_Factors_Of_Product_Of_Array {
 			}
 		}
 	}
+
 }
