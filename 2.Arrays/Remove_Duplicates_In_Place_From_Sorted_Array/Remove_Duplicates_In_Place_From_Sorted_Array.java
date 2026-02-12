@@ -1,9 +1,17 @@
-package practice.dsa.sheet.part1;
 
 public class Remove_Duplicates_In_Place_From_Sorted_Array {
 	
 	public static void main(String[] args) {
 		
+		int[] arr = {1, 1, 2, 2, 3, 4, 4, 5};
+		
+		int newLength = removeDuplicatesInPlace_2nd_approach(arr);
+		
+		System.out.println("New Length: " + newLength);
+		
+		for(int i = 0; i < newLength; i++) {
+			System.out.print(arr[i] + " ");
+		}
 	}
 	
 	/*

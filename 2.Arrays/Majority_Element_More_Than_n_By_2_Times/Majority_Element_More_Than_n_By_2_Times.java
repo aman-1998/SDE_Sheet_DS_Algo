@@ -1,8 +1,8 @@
-package algorithms.part1;
-
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /*
  * 
@@ -35,9 +35,10 @@ Result: 4
 public class Majority_Element_More_Than_n_By_2_Times {
 	 
 	public static void main(String[] args) {
-		int[] arr = {4, 6, 7, 6, 7, 7, 7, 8, 7};
+		//int[] arr = {4, 6, 7, 6, 7, 7, 7, 8, 7};
 		//int[] arr = {3, 2, 3};
-		int element = majorityElement_byNeetCode(arr);
+		int[] arr = {8,8,7,7,7};
+		int element = majorityElement_byNeetCode_2(arr);
 		if(element != Integer.MIN_VALUE) {
 			System.out.println("Majority element = " + element);
 		} else {
@@ -168,4 +169,63 @@ public class Majority_Element_More_Than_n_By_2_Times {
 		
 		return possibleResult;
 	}
+
+	/*
+	 * Another Approach : By Neet Code (Easy to understand)
+	 * 
+	 * Moore's Voting Algorithm
+	 * T = O(2n) = O(n)
+	 * S = O(1)
+	 */
+	private static int majorityElement_byNeetCode_2(int[] arr) {
+        int n = arr.length;
+        Map<Integer, Integer> hMap = new HashMap<>();
+        
+        for(int i = 0; i <= n-1; i++) {
+            Integer count = hMap.get(arr[i]);
+            if(count != null) {
+                hMap.put(arr[i], count + 1);
+            } else {
+                hMap.put(arr[i], 1);
+                if(hMap.size() > 1) {
+                    Set<Integer> toBeRemovedSet = new HashSet<>();
+                    for(Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
+                        int element = entry.getKey();
+                        int currentCount = entry.getValue();
+						entry.setValue(--currentCount);
+                        
+                        if(currentCount == 0) {
+                            toBeRemovedSet.add(element);
+                        }
+                    }
+                    
+                    for(int elem : toBeRemovedSet) {
+                        hMap.remove(elem);
+                    }
+                }
+            }
+        }
+        
+        if(hMap.isEmpty()) {
+            return Integer.MIN_VALUE;
+        } 
+        
+        Integer possibleResult = null;
+        for(Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
+            possibleResult = entry.getKey();
+        }
+        
+        int count = 0;
+        for(int i = 0; i <= n-1; i++) {
+            if(arr[i] == possibleResult) {
+                count++;
+            }
+        }
+        
+        if(count > n/2) {
+            return possibleResult;
+        }
+        
+        return Integer.MIN_VALUE;
+    }
 }

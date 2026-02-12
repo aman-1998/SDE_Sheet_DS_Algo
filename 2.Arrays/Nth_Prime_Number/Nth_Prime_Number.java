@@ -82,18 +82,18 @@ public class Nth_Prime_Number {
 		}
 		
 		int count = 0;
-		int index = 0;
+		int result = 0;
 		for(int i=2; i <= sieve_array_size; i++) {
 			if(primes[i]) {
 				count++;
 				if(count == n) {
-					index = i;
+					result = i;
 					break;
 				}
 			}
 		}
 		
-		return index;
+		return result;
 	}
 	
 	/*
@@ -111,13 +111,13 @@ public class Nth_Prime_Number {
 		boolean[] primes = new boolean[sieve_array_size+1];
 		java.util.Arrays.fill(primes, true);
 		int count = 0 ;
-		int index = 0;
+		int result = 0;
 		for(int i = 2; i<= sieve_array_size; i++) {
 
 			if(primes[i]) {
 				count++;
 				if(count== n){
-					index = i;
+					result = i;
 					break;
 				}
 				for(int j = i*i; j <= sieve_array_size; j=j+i) {
@@ -126,6 +126,6 @@ public class Nth_Prime_Number {
 			}
 		}
 		
-		return index;
+		return result;
 	}
 }

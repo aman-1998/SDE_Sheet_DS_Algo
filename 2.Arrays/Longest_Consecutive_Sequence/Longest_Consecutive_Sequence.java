@@ -1,5 +1,3 @@
-package algorithms;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +6,7 @@ import java.util.Map;
  * 
 Longest Consecutive Sequence in an Array
 ------------------------------------------
-Problem Statement: You are given an array of ‘N’ integers. You need to find the length of the longest sequence which contains the consecutive elements.
+Problem Statement: You are given an array of N integers. You need to find the length of the longest sequence which contains the consecutive elements.
 
 Examples
 Example 1:
@@ -41,7 +39,7 @@ public class Longest_Consecutive_Sequence {
 		//int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 		//int[] arr = {};
 		
-		int maxLength = longest_consecutive_sequence_1(arr);
+		int maxLength = longest_consecutive_sequence_3(arr);
 		System.out.println(maxLength);
 		
 	}
@@ -121,7 +119,7 @@ public class Longest_Consecutive_Sequence {
 	private static int longest_consecutive_sequence_3(int[] arr) {
 		
 		int n = arr.length;
-		Map<Integer, Boolean> hashMap = new HashMap<>();
+		Map<Integer, Boolean> hMap = new HashMap<>();
 		/*
 		 * HashMap<Integer, Boolean>
 		 * --------------------------
@@ -134,31 +132,32 @@ public class Longest_Consecutive_Sequence {
 		 * (1, false) ---> This means we have not yet found the length of longest consecutive sequence starting with 1
 		 */
 		
-		int maxLength = 0;
-		for(int i = 0; i <= n-1; i++) {
-			hashMap.put(arr[i], false);
-		}
 		
 		for(int i = 0; i <= n-1; i++) {
-			if(!hashMap.containsKey(arr[i]-1)) {
-				Boolean val = hashMap.get(arr[i]);
-				if(val == false) { // That means we have not yet found length of longest consecutive sequence starting with arr[i]
-					int current = arr[i];
-					int tempLength = 1;
-					while(hashMap.containsKey(current+1)) {
-						current = current + 1;
-						tempLength++;
-					}
-					
-					if(maxLength < tempLength) {
-						maxLength = tempLength;
-					}
-					
-					hashMap.put(arr[i], true); // That means we have found length of longest consecutive sequence starting with arr[i]. So, marking it true.
+			hMap.put(arr[i], false);
+		}
+		
+		int maxLength = 1;
+		
+		for(int i = 0; i <= n-1; i++) {
+			if(hMap.get(arr[i]) == false && 
+			   hMap.containsKey(arr[i]-1) == false) {
+				
+				int curr = arr[i];
+				int count = 1;
+				while(hMap.containsKey(curr + 1)) {
+					curr = curr + 1;
+					count++;
 				}
+			
+				if(count > maxLength) {
+					maxLength = count;
+				}
+			
+				hMap.put(curr, true);
 			}
 		}
-	
+		
 		return maxLength;
 	}
 }

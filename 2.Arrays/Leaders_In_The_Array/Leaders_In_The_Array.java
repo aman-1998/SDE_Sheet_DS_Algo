@@ -28,9 +28,6 @@ public class Leaders_In_The_Array {
 			
 			if(arr[i] > maxRight) {
 				result.add(arr[i]);
-			}
-			
-			if(arr[i] > maxRight) {
 				maxRight = arr[i];
 			}
 		}

@@ -27,6 +27,12 @@ public class Longest_Subarray_With_Sum_Divisible_By_K {
 	 */
 	
 	/*
+	 *				     s%k = r
+	 *	|<--------------------------------------->|
+	 *	|<--------------->|<--------------------->|
+	 *	      s1%k = r		     s2%k = 0
+     *
+	 * We can use the concept of prefix sum and hash map to solve this problem in O(n) time.
 	 * When the prefix sum up to index j and prefix sum up to index i (where i < j) give 
 	 * the same remainder modulo k, then the sum of the subarray between them (i+1…j) is 
 	 * divisible by k

@@ -30,7 +30,8 @@ public class Merge_Overlapping_Sub_Intervals {
 	}
 	
 	/*
-	 * T = O(n), S = O(n)
+	 * T = O(n*log n) + O(n)  = O(n*log n)
+	 * S = O(n)
 	 */
 	public static int[][] mergeOverLappingSubIntervals(int[][] arr) {
 		

@@ -1,11 +1,10 @@
-package algorithms.part1;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /*
  * 
@@ -34,7 +33,7 @@ public class Majority_Element_More_Than_n_By_3_Times {
 	public static void main(String[] args) {
 		//int[] arr = {2, 1, 1, 3, 1, 4, 5, 6};
 		int[] arr = {4, 8, 6, 6, 8, 6, 8, 5};
-		List<Integer> elementsList = majorityElement_byNeetCode(arr);
+		List<Integer> elementsList = majorityElement_byNeetCode_2(arr);
 
 		elementsList.stream().forEach(t -> System.out.print(t + " "));
 	}
@@ -233,4 +232,77 @@ public class Majority_Element_More_Than_n_By_3_Times {
 		
 		return result;
 	}
+
+	/*
+	 * Another Approach : By Neet Code (Easy to understand)
+	 * 
+	 * Moore's Voting Algorithm
+	 * T = O(2n) = O(n)
+	 * S = O(1)
+	 */
+	private static List<Integer> majorityElement_byNeetCode_2(int[] arr) {
+        int n = arr.length;
+        Map<Integer, Integer> hMap = new HashMap<>();
+        
+        for(int i = 0; i <= n-1; i++) {
+            Integer count = hMap.get(arr[i]);
+            if(count != null) {
+                hMap.put(arr[i], count + 1);
+            } else {
+                hMap.put(arr[i], 1);
+                if(hMap.size() > 2) {
+                    Set<Integer> toBeRemovedSet = new HashSet<>();
+                    for(Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
+                        int element = entry.getKey();
+                        int currentCount = entry.getValue();
+						entry.setValue(--currentCount);
+                        
+                        if(currentCount == 0) {
+                            toBeRemovedSet.add(element);
+                        }
+                    }
+                    
+                    for(int elem : toBeRemovedSet) {
+                        hMap.remove(elem);
+                    }
+                }
+            }
+        }
+        
+        if(hMap.isEmpty()) {
+            return new ArrayList<>();
+        } 
+        
+        Integer possibleResult1 = Integer.MIN_VALUE;
+        Integer possibleResult2 = Integer.MIN_VALUE;
+        int x = 0;
+        for(Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
+			if(x == 0) {
+				possibleResult1 = entry.getKey();
+			} else {
+				possibleResult2 = entry.getKey();
+			}
+			x++;
+        }
+        
+        int count1 = 0;
+        int count2 = 0;
+        for(int i = 0; i <= n-1; i++) {
+            if(arr[i] == possibleResult1) {
+                count1++;
+            } else if(arr[i] == possibleResult2) {
+				count2++;
+			}
+        }
+        
+        List<Integer> result = new ArrayList<>();
+        if(count1 > n/3) {
+            result.add(possibleResult1);
+        }
+        if(count2 > n/3) {
+            result.add(possibleResult2);
+        }
+		
+        return result;
+    }
 }
