@@ -1,4 +1,3 @@
-package algorithms.part2;
 
 public class Find_Peak_Element {
 	

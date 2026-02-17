@@ -1,5 +1,3 @@
-package algorithms.part2;
-
 public class Binary_Search_FromIndex_ToIndex {
 	
 	public static void main(String[] args) {

@@ -1,4 +1,3 @@
-package algorithms.part2;
 
 public class Split_Array_Largest_Sum {
 	
@@ -32,7 +31,7 @@ public class Split_Array_Largest_Sum {
 		int ans = Integer.MAX_VALUE;
 		while(l <= r) {
 			int mid = (l+r)/2;
-			int noOfSubArr = possibleSubArrays(arr, mid, k);
+			int noOfSubArr = possibleSubArrays_2(arr, mid, k);
 			if(noOfSubArr <= k) {
 				if(mid <= ans) {
 					ans = mid;
@@ -63,6 +62,26 @@ public class Split_Array_Largest_Sum {
 				}
 			}
 		}
+		
+		return noOfSubArr;
+	}
+
+	private static int possibleSubArrays_2(int[] arr, int maxSum, int k) {
+
+		int n = arr.length;
+		int sum = 0;
+		int noOfSubArr = 0;
+		for(int i = 0; i <= n-1; i++) {
+			if(sum + arr[i] <= maxSum) {
+				sum = sum + arr[i];
+			} else {
+				i--;
+				sum = 0;
+				noOfSubArr++;
+			} 
+		}
+
+		noOfSubArr++;
 		
 		return noOfSubArr;
 	}

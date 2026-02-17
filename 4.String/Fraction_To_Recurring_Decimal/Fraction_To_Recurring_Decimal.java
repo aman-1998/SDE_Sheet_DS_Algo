@@ -1,5 +1,3 @@
-package practice.dsa.sheet.part3;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +10,11 @@ public class Fraction_To_Recurring_Decimal {
 	
 	public static void main(String[] args) {
 		
-		int numerator = 1;
-		int denominator = -1;
+		//int numerator = 1;
+		//int denominator = -1;
+
+		int numerator = 22;
+		int denominator = 7;
 		
 		String output = fractionToDecimal(numerator, denominator);
 		
@@ -42,12 +43,10 @@ public class Fraction_To_Recurring_Decimal {
 			return sign == 1 ?  "" + (n/d) : "-" + (n/d);
 		}
 		
-		String output = "";
-		output = output + (n/d);
-		output = output + ".";
+		String output = (n/d) + ".";
 		
 		Map<String, Integer> hMap = new HashMap<>();
-		List<String> list = new ArrayList<>();
+		List<Integer> list = new ArrayList<>();
 		
 		int count = 0;
 		while(true) {
@@ -55,7 +54,7 @@ public class Fraction_To_Recurring_Decimal {
 			
 			if(rem == 0) {
 				for(int i = 0; i < count; i++) {
-					output = output + list.get(i).substring(list.get(i).length() - 1);
+					output = output + list.get(i);
 				}
 				break;
 			}
@@ -66,17 +65,17 @@ public class Fraction_To_Recurring_Decimal {
 			Integer index = hMap.get(""+(n+q));
 			if(index == null) {
 				hMap.put(""+(n+q), count);
-				list.add(""+(n+q));
+				list.add((int)q);
 				count++;
 			} else {
 				
 				for(int i = 0; i < index; i++) {
-					output = output + list.get(i).substring(list.get(i).length() - 1);
+					output = output + list.get(i);
 				}
 				
 				output = output + "(";
 				for(int i = index; i < count; i++) {
-					output = output + list.get(i).substring(list.get(i).length() - 1);
+					output = output + list.get(i);
 				}
 				output = output + ")";
 				break;

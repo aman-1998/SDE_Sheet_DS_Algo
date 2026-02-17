@@ -1,5 +1,3 @@
-package algorithms.part2;
-
 public class Minimum_In_Rotated_Sorted_Array_2 {
 	
 	public static void main(String[] args) {

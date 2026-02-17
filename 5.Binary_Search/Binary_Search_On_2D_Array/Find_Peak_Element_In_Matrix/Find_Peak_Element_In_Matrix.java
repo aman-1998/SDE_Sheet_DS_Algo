@@ -1,4 +1,3 @@
-package algorithms.part2;
 /*
  * Video: https://www.youtube.com/watch?v=nGGp5XBzC4g
  */
@@ -30,7 +29,7 @@ public class Find_Peak_Element_In_Matrix {
 		
 		while(l <= r) {
 			int mid = (l+r)/2;
-			int maxIndex = maxInRow(mat, mid);
+			int maxIndex = maxInCol(mat, mid);
 			int left = mid-1 >= 0 ? mat[maxIndex][mid-1] : -1;
 			int right = mid+1 < n ? mat[maxIndex][mid+1] : -1;
 			if(mat[maxIndex][mid] >  left && mat[maxIndex][mid] > right) {
@@ -45,7 +44,7 @@ public class Find_Peak_Element_In_Matrix {
 		return new int[] {-1, -1};
     }
 
-	private static int maxInRow(int[][] mat, int mid) {
+	private static int maxInCol(int[][] mat, int mid) {
 		
 		int m = mat.length;
 		int n = mat[0].length;

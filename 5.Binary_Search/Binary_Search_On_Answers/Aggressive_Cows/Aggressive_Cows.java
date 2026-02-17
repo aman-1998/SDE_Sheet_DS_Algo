@@ -1,5 +1,3 @@
-package algorithms.part2;
-
 import java.util.Arrays;
 
 public class Aggressive_Cows {
@@ -72,6 +70,26 @@ public class Aggressive_Cows {
 	
 	// T = O(n)
 	private static boolean PossibleToPlaceCows(int[] stalls, int cows, int minDistance) {
+		
+		int n = stalls.length;
+		int last = 0;
+		int countCow = 1;
+		for(int i = 1; i <= n-1; i++) {
+			if((stalls[i] - stalls[last]) >= minDistance) {
+				last = i;
+				countCow++;
+			}
+			
+			if(countCow == cows) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	// T = O(n)
+	private static boolean PossibleToPlaceCows_2(int[] stalls, int cows, int minDistance) {
 		
 		int n = stalls.length;
 		int last = stalls[0];

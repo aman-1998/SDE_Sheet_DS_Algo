@@ -1,4 +1,3 @@
-package algorithms.part2;
 
 public class Nth_Root_Of_A_Number_2nd_Approach {
 	
@@ -25,6 +24,7 @@ public class Nth_Root_Of_A_Number_2nd_Approach {
 		
 		int left = 1;
 		int right = x;
+		int res = 0;
 		
 		while(left <= right) {
 			int mid = (left + right)/2;
@@ -34,11 +34,14 @@ public class Nth_Root_Of_A_Number_2nd_Approach {
 			} else if(r > x) {
 				right = mid - 1;
 			} else {
+				if(mid > res) {
+					res = mid;
+				}
 				left = mid + 1;
 			}
 		}
 		
-		return -1;
+		return res;
 	}
 	
 	// T = O(log n)

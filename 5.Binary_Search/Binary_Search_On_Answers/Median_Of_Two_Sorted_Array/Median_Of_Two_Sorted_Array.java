@@ -1,4 +1,5 @@
-package algorithms.part2;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Median_Of_Two_Sorted_Array {
 	
@@ -8,9 +9,50 @@ public class Median_Of_Two_Sorted_Array {
 		
 		int[] arr2 = {2, 3, 6, 15};
 		
-		double median = findMedianSortedArrays(arr1, arr2);
+		double median = findMedianSortedArrays_BF(arr1, arr2);
 		
 		System.out.println("Median = " + median);
+	}
+
+	/*
+	 * T = O(m+n)
+	 * S = O(m+n)
+	 */
+	private static double findMedianSortedArrays_BF(int[] arr1, int[] arr2) {
+		int n1 = arr1.length;
+		int n2 = arr2.length;
+		List<Integer> mergedList = new ArrayList<>();
+		
+		int i = 0;
+		int j = 0;
+		
+		while(i < n1 && j < n2) {
+			if(arr1[i] <= arr2[j]) {
+				mergedList.add(arr1[i]);
+				i++;
+			} else {
+				mergedList.add(arr2[j]);
+				j++;
+			}
+		}
+		
+		if(i < n1) {
+			mergedList.add(arr1[i]);
+			i++;
+		}
+		
+		if(j < n2) {
+			mergedList.add(arr2[j]);
+			j++;
+		}
+		
+		if((n1 + n2)%2 == 0) {
+			int a = mergedList.get((n1+n2+1)/2-1);
+			int b = mergedList.get((n1+n2+1)/2);
+			return (a+b)/2.0;
+		} else {
+			return mergedList.get((n1+n2+1)/2-1);
+		}
 	}
 	
 	/*

@@ -1,5 +1,3 @@
-package algorithms.part2;
-
 public class Lower_Bound {
 	
 	public static void main(String[] args) {
