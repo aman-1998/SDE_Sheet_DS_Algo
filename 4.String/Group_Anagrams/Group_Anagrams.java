@@ -1,5 +1,3 @@
-package practice.dsa.sheet.part3;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,7 +10,7 @@ public class Group_Anagrams {
 	
 	public static void main(String[] args) {
 		
-		String[] strArr = {"bdddddddddd","bbbbbbbbbbc"};
+		String[] strArr = {"ddddddddddg","dgggggggggg"};
 		List<List<String>> anagramGroups = groupAnagrams(strArr);
 		
 		anagramGroups.forEach(t -> System.out.println(t.toString()));
@@ -82,20 +80,33 @@ public class Group_Anagrams {
 			String str = strArr[i];
 			int len = str.length();
 			for(int j = 0; j <= len-1; j++) { // T = O(x)
-				letter[str.charAt(j) - 'a']++;
+				if(letter[str.charAt(j) - 'a'] == 0) {
+                    letter[str.charAt(j) - 'a'] = 1;
+                } else {
+					letter[str.charAt(j) - 'a'] = 0;
+				}
 			}
 			
 			String key = "";
 			for(int j = 0 ; j <= 25; j++) {
-				key = key + letter[j] + "#";
+				key = key + letter[j];
 			}
 			
+			// List<String> group = groupMap.get(key);
+			// if(group == null) {
+			// 	group = new ArrayList<>();
+			// } 
+			// group.add(str);
+			// groupMap.put(key, group);
+
 			List<String> group = groupMap.get(key);
-			if(group == null) {
-				group = new ArrayList<>();
-			} 
-			group.add(str);
-			groupMap.put(key, group);
+			if(group != null) {
+				group.add(str);
+			} else {
+                group = new ArrayList<>();
+                group.add(str);
+			    groupMap.put(key, group);
+            }
 		}
 		
 		return new ArrayList<>(groupMap.values());

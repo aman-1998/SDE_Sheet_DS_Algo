@@ -1,10 +1,10 @@
-package practice.dsa.sheet.part3;
 
 public class Reverse_Only_Letters {
 	
 	public static void main(String[] args) {
 		
-		String str = "7_28]";
+		//String str = "7_28]";
+        String str = "8abc_72]d";
 		String output = reverseOnlyLetters(str);
 		
 		System.out.println(output);

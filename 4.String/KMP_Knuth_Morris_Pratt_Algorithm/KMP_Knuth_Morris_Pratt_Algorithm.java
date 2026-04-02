@@ -1,4 +1,3 @@
-package algorithms.part3;
 
 public class KMP_Knuth_Morris_Pratt_Algorithm {
 

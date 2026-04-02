@@ -1,4 +1,3 @@
-package algorithms.part3;
 
 public class Longest_Common_Prefix {
 	

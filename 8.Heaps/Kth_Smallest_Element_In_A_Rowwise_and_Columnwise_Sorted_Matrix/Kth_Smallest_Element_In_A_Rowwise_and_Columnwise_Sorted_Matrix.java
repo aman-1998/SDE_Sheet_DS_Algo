@@ -1,6 +1,6 @@
-package practice.dsa.sheet.part5;
-
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class Kth_Smallest_Element_In_A_Rowwise_and_Columnwise_Sorted_Matrix {
@@ -10,7 +10,7 @@ public class Kth_Smallest_Element_In_A_Rowwise_and_Columnwise_Sorted_Matrix {
 		int[][] mat = {{1, 5, 9}, {10, 11, 13}, {12, 13, 15}};
 		int k = 8;
 		
-		int kthSmallest = kthSmallest_1st_Approach(mat, k);
+		int kthSmallest = kthSmallest_2nd_Approach_better(mat, k);
 		
 		System.out.println(kthSmallest);
 	}
@@ -83,6 +83,45 @@ public class Kth_Smallest_Element_In_A_Rowwise_and_Columnwise_Sorted_Matrix {
 		
 		return output;
 	}
+
+	/*
+	 * Using MinHeap : This approach is better from smaller value of k
+	 * In the question if it is given that k value is very small compared to m then use this approach.
+	 * 
+	 * This approach works only when matrix is row wise and column wise sorted
+	 * 
+	 * T = O((2k+m)*log m)
+	 * if k value is very large then (given in question) => T = O(k*log m)
+	 * S = O(m)
+	*/
+	public static int kthSmallest_2nd_Approach_better(int[][] mat, int k) {
+	
+	int m = mat.length;
+	int n = mat[0].length;
+	
+	PriorityQueue<List<Integer>> minHeap = new PriorityQueue<>(Comparator.comparing((List<Integer> list) -> mat[list.get(0)][list.get(1)]));
+	
+	for(int i = 0; i <= m-1; i++) { // T = O(m*log m)
+		minHeap.add(Arrays.asList(i,0));
+	}
+	
+	int count = 0;
+	int output = -1;
+	while(!minHeap.isEmpty()) { // T = O(k*2*log m)
+		List<Integer> deleted = minHeap.poll();
+		count++;
+		if(count == k) {
+			output = mat[deleted.get(0)][deleted.get(1)];
+			break;
+		}
+		
+		if(deleted.get(1) < n-1) {
+			minHeap.add(Arrays.asList(deleted.get(0), deleted.get(1) + 1));
+		}
+	}
+	
+	return output;
+}
 	
 	/*
 	 * Using binary search : This approach is better for larger value of k

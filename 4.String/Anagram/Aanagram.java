@@ -1,4 +1,3 @@
-package algorithms.part3;
 
 public class Aanagram {
 	

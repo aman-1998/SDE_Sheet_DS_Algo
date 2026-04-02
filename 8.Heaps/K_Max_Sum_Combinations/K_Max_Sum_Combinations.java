@@ -1,7 +1,6 @@
-package practice.dsa.sheet.part5;
-
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class K_Max_Sum_Combinations {
@@ -18,7 +17,7 @@ public class K_Max_Sum_Combinations {
 		(3,6) (3,3) (3,2)
 		*/
 		
-		int[] output = kMaxSumCombination(arr1, arr2, k);
+		int[] output = kMaxSumCombination_2nd(arr1, arr2, k);
 		
 		Arrays.stream(output).boxed().forEach(sum -> System.out.println(sum));
 	}
@@ -74,5 +73,63 @@ public class K_Max_Sum_Combinations {
 		}
 		
 		return output;
+	}
+
+	// Better than above solution
+	public static int[] kMaxSumCombination_2nd(int[] arr1, int[] arr2, int k) {
+	
+		int m = arr1.length;
+		int n = arr2.length;
+
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+		
+		PriorityQueue<List<Integer>> maxHeap = new PriorityQueue<>(Comparator.comparing((List<Integer> list) -> arr1[list.get(0)] + arr2[list.get(1)]).reversed());
+		
+		int min = Integer.MAX_VALUE;
+		if(k < m) {
+			min = k;
+		} else {
+			min = m;
+		}
+		
+		for(int i = m-1; i >= m-min; i--) {
+			maxHeap.add(Arrays.asList(i, n-1));
+		}
+		
+		int[] output = new int[k];
+		int i = 0;
+		
+		while(!maxHeap.isEmpty()) {
+			List<Integer> deleted = maxHeap.poll();
+			output[i] = arr1[deleted.get(0)] + arr2[deleted.get(1)];
+			i++;
+			if(i == k) {
+				break;
+			}
+			
+			if(deleted.get(1) > 0) {
+				maxHeap.add(Arrays.asList(deleted.get(0), deleted.get(1)-1));
+			}
+		}
+		
+		return output;
+	}
+}
+
+class IndexNode {
+	
+	public int arr1Index;
+	
+	public int arr2Index;
+	
+	public IndexNode(int arr1Index, int arr2Index) {
+		this.arr1Index = arr1Index;
+		this.arr2Index = arr2Index;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + arr1Index + ", " + arr2Index + ")";
 	}
 }

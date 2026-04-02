@@ -1,11 +1,10 @@
-package algorithms.part2;
 
 public class Kth_Missing_Positive_In_Strictly_Increasing_Array {
 	
 	public static void main(String[] args) {
 		
 		int[] arr = {2, 3, 4, 7, 11};
-		int k = 5;
+		int k = 4;
 		
 		int res = findKthMissingPositive_BF(arr, k);
 		
@@ -26,7 +25,7 @@ public class Kth_Missing_Positive_In_Strictly_Increasing_Array {
 		}
 		
 		for(int i = 0; i <= n-1; i++) {
-			if(k > arr[i]) {
+			if(k >= arr[i]) {
 				k++;
 			} else {
 				break;
