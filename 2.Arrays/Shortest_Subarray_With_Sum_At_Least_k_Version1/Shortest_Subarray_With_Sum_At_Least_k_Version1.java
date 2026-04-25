@@ -1,4 +1,3 @@
-package algorithms;
 
 // Here, elements of array can only be positive
 public class Shortest_Subarray_With_Sum_At_Least_k_Version1 {
@@ -6,7 +5,7 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version1 {
 		
 		int[] arr = {2, 3, 1, 2, 4, 3};
 		//int minLength = shortest_subarray_with_sum_at_least_k_BF(arr, 7);
-		int minLength = shortest_subarray_with_sum_at_least_k(arr, 7);
+		int minLength = shortestSubarrayWithSumAtLeastK(arr, 7);
 		
 		System.out.println(minLength);
 	}
@@ -44,7 +43,7 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version1 {
 	}
 	
 	/*
-	 * Best Solution : Variable size sliding window
+	 * Better Solution : Variable size sliding window
 	 * 
 	 * T = O(2n) = O(n)
 	 * S = O(1)
@@ -87,5 +86,38 @@ public class Shortest_Subarray_With_Sum_At_Least_k_Version1 {
 		}
 		
 		return minLength == Integer.MAX_VALUE ? 0 : minLength;
+	}
+	
+	/*
+	 * Best Solution : Variable size sliding window
+	 * 
+	 * T = O(2n) = O(n)
+	 * S = O(1)
+	 * 
+	 */
+	public static int shortestSubarrayWithSumAtLeastK(int[] arr, int k) {
+	
+		int n = arr.length;
+		int i = 0;
+		int j = 0;
+		int sum = 0;
+		int min = Integer.MAX_VALUE;
+		
+		while(j < n) {
+			sum = sum + arr[j];
+			if(sum >= k) {
+				while(i <= j && sum >= k) {
+					sum = sum - arr[i];
+					i++;
+				}
+				int count = (j-i+1)+1;
+				if(count < min) {
+					min = count;
+				}
+			}
+			j++;
+		}
+		
+		return min == Integer.MAX_VALUE ? 0 : min;
 	}
 }
