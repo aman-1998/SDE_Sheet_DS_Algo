@@ -17,6 +17,10 @@ public class Build_BT_Using_Preorder_Inorder {
 		Preorder_Inorder_Postorder_In_BT.postorder(root);
 	}
 	
+	/*
+	 * T = O(n)
+	 * S = O(n)
+	 */
 	public static Node buildTree(int[] preorder, int[] inorder) {
 		
 		int m = preorder.length;
