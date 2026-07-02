@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+import practice.dsa.sheet.part8.utility.EdgeWithWeight;
 import practice.dsa.sheet.part8.utility.WeightedNode;
 
 public class Prims_Algo_To_Find_MST {
@@ -23,7 +24,7 @@ public class Prims_Algo_To_Find_MST {
 		int minimalCost = MSTUsingMatrix(G, 0);
 		System.out.println("Cost = " + minimalCost);
 		
-		for(int i = 0; i <=n-1; i++) {
+		for(int i = 0; i <=n-2; i++) {
 			System.out.println(edges[i][0] + " to " + edges[i][1]);
 		}
 		
@@ -66,6 +67,88 @@ public class Prims_Algo_To_Find_MST {
 	}
 	
 	/*
+	 * Here, we are using adjacency matrix.
+	 * 
+	 * Time Complexity = O(n²) = O(V²)
+	 * Space Complexity = O(n) = O(V)
+	 * 
+	 */
+	public static int MSTUsingMatrix(int[][] G, int start) {
+		
+		int n = G.length;
+		
+		for(int i = 0; i <= n-1; i++) {
+			for(int j = 0; j <= n-1; j++) {
+				if(i != j && G[i][j] == 0) {
+					G[i][j] = Integer.MAX_VALUE;
+				}
+			}
+		}
+		
+		int minCost = Integer.MAX_VALUE;
+		int u = start;
+		int v = 0;
+		for(int i = 0; i <= n-1; i++) {
+			if(G[start][i] != 0 && G[start][i] < minCost) {
+				v = i;
+				minCost = G[start][i];
+			}
+		}
+		
+		edges = new int[n-1][2];
+		int countEdge = 0;
+		int[] near = new int[n];
+		Arrays.fill(near, -1);
+		
+		edges[countEdge][0] = u;
+		edges[countEdge][1] = v;
+		countEdge++;
+		
+		for(int i = 0; i <= n-1; i++) {
+			if(i != u && i != v) {
+				if(G[i][u] < G[i][v]) {
+					near[i] = u;
+				} else {
+					near[i] = v;
+				}
+			}
+		}
+		
+		near[u] = -1;
+		near[v] = -1;
+		
+		for(int i = 2; i <= n-1; i++) {
+			int minEdge = Integer.MAX_VALUE;
+			int x = 0;
+			for(int j = 0; j <= n-1; j++) {
+				if(near[j] != -1 && G[j][near[j]] < minEdge) {
+					x = j;
+					minEdge = G[j][near[j]];
+				}
+			}
+			
+			minCost = minCost + minEdge;
+			edges[countEdge][0] = x;
+			edges[countEdge][1] = near[x];
+			countEdge++;
+			near[x] = -1;
+			
+			for(int j = 0; j <= n-1; j++) {
+				if(near[j] != -1 && G[x][j] < G[j][near[j]]) {
+					near[j] = x;
+				}
+			}
+		}
+		
+		return minCost;
+	}
+	
+	/*
+	 * Here, we are using adjacency matrix but using heap.
+	 * This approach is not recommended because with this approach
+	 * time complexity becomes greater than n². So, heap based approach
+	 * is recommended when we use adjacency list.
+	 * 
 	 * Time Complexity : O(n² + E log E)
 	 * Space Complexity: O(E + n)
 	 *
@@ -83,7 +166,7 @@ public class Prims_Algo_To_Find_MST {
 	 *
 	 * S = O(n)
 	 */
-	public static int MSTUsingMatrix(int[][] G, int start) {
+	public static int MSTUsingMatrix_usingHeap(int[][] G, int start) {
 		
 		int n = G.length;
 		
@@ -123,6 +206,7 @@ public class Prims_Algo_To_Find_MST {
 	}
 	
 	/*
+	 * 
 	 * Time Complexity : O(E log E)
 	 * Space Complexity: O(E + n)
 	 *
@@ -181,19 +265,3 @@ public class Prims_Algo_To_Find_MST {
 	}
 }
 
-class EdgeWithWeight {
-	public int v1;
-	public int v2;
-	public int wt;
-	
-	public EdgeWithWeight(int v1, int v2, int wt) {
-		this.v1 = v1;
-		this.v2 = v2;
-		this.wt = wt;
-	}
-
-	@Override
-	public String toString() {
-		return "EdgeWithWeight[v1=" + v1 + ", v2=" + v2 + ", wt=" + wt + "]";
-	}
-}
