@@ -144,7 +144,7 @@ public class Prims_Algo_To_Find_MST {
 	}
 	
 	/*
-	 * Here, we are using adjacency matrix but using heap.
+	 * Here, we are using adjacency matrix but also using heap.
 	 * This approach is not recommended because with this approach
 	 * time complexity becomes greater than n². So, heap based approach
 	 * is recommended when we use adjacency list.
