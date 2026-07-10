@@ -29,7 +29,10 @@ public class Connected_Components_Using_Disjointset {
 		System.out.println(count);
 	}
 	
-	
+	/*
+	 * T = O(V + 2*E)
+	 * S = O(V)
+	 */
 	public static int noOfConnectedComponents(List<List<Integer>> G) {
 		
 		int n = G.size();
