@@ -58,6 +58,7 @@ public class Most_Stones_Removed_With_Same_Row_Or_Column {
 			set.add(ds.findSet(nodeRowVal));
 		} 
 		
+		// set.size() = no. of components
 		return n - set.size();
 	}
 }
