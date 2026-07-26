@@ -3,7 +3,7 @@ package practice.dsa.sheet.part8;
 import java.util.ArrayList;
 import java.util.List;
 
-public class No_Of_Islands_2 {
+public class Number_Of_Island_2 {
 	
 	public static void main(String[] args) {
 		
@@ -14,7 +14,7 @@ public class No_Of_Islands_2 {
 				             {1, 1},
 				             {1, 0},
 				             {0, 1},
-				             {0,3},
+				             {0, 3},
 				             {1, 3},
 				             {0, 4},
 				             {3, 2},
