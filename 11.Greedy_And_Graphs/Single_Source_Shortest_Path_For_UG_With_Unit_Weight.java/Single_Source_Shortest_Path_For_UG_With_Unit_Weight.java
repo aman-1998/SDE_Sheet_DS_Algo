@@ -6,9 +6,22 @@ import java.util.List;
 import java.util.Queue;
 import java.util.stream.IntStream;
 
-public class Single_Source_Shortest_Path_For_Undirected_Graph_With_Unit_Weight {
+public class Single_Source_Shortest_Path_For_UG_With_Unit_Weight {
 	
 	public static void main(String[] args) {
+		
+		/*       
+		 * 				1
+		 *       (1)---------(4)
+		 *     1 /|			  |\
+		 *      / |   		  | \
+		 *   (0)  |	1		1 |  \ 1
+		 *     \  |			  |   \
+		 *    1 \ |			  |    \
+		 *       \|           |     \
+		 *      (2)----------(3)----(6)
+		 *              1         1
+		 */
 		
 		int[][] graph = {{1,2}, {0,2,4}, {0,1,3}, {2,4,5}, {1,3,5}, {3,4}};
 		int source = 0;
@@ -19,8 +32,9 @@ public class Single_Source_Shortest_Path_For_Undirected_Graph_With_Unit_Weight {
 	}
 	
 	/*
-	 * Using queue we can solve this problem in optimal time. No need of 
-	 * Dijkstra's algorithm to solve this because every weight is same.
+	 * For an undirected graph, using queue we can solve this problem in 
+	 * optimal time. No need of Dijkstra's algorithm to solve this because 
+	 * every weight is same. So, every edge will be relaxed only once.
 	 * 
 	 * T = O(V+E)
 	 * S = O(V)
