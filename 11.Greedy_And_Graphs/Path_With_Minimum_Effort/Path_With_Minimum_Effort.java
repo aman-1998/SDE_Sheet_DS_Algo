@@ -18,6 +18,10 @@ public class Path_With_Minimum_Effort {
 		System.out.println(minEffort);
 	}
 	
+	/*
+	 * T = O(E * log V) = O(m *n * 4 * log(m*n)) 
+	 * S = O(m*n)
+	 */
 	public static int minimumEffortPath(int[][] heights) {
         
 		int rows = heights.length;

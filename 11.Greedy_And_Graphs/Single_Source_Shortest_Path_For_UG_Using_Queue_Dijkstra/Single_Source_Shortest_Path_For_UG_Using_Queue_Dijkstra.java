@@ -45,9 +45,12 @@ public class Single_Source_Shortest_Path_For_UG_Using_Queue_Dijkstra {
 	 * Unlike, classic dijkstra's algo, here we are relaxing an edge multiple
 	 * times. So, time complexity degrades.
 	 * 
+	 * Dijkstra's algorithm works for even Directed graphs the only 
+	 * condition is that the edges should have positive weight.
 	 * 
-	 * T = O(V * k*E) ; k = constant
-	 *   = O(V*E)
+	 * T = (max relaxations per vertex) × (sum of out-degrees across all vertices)
+  	 *	 = (V-1) × E
+  	 *	 = O(V × E)
 	 *   
 	 * S = O(V)
 	 */
