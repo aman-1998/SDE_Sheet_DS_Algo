@@ -47,9 +47,10 @@ public class Path_With_Minimum_Effort {
 			List<Integer> popped = minHeap.poll();
 			int x = popped.get(0);
 			int y = popped.get(1);
+			int maxEffortSoFar = popped.get(2);
 			
 			if(x == rows-1 && y == cols-1) {
-				return popped.get(2); // dis[x][y]
+				return maxEffortSoFar; // dis[x][y]
 			}
 			
 			int[] dx = {1, 0, -1, 0};
@@ -60,10 +61,10 @@ public class Path_With_Minimum_Effort {
 				
 				if(isValid(rows, cols, adjx, adjy)) {
 					int diff = Math.abs(heights[x][y] - heights[adjx][adjy]);
-					int maxEffortSoFar = Math.max(dis[x][y], diff);
-					if(maxEffortSoFar < dis[adjx][adjy]) {
-						dis[adjx][adjy] = maxEffortSoFar;
-						minHeap.add(Arrays.asList(adjx, adjy, maxEffortSoFar));
+					int newMaxEffort = Math.max(maxEffortSoFar, diff);
+					if(newMaxEffort < dis[adjx][adjy]) {
+						dis[adjx][adjy] = newMaxEffort;
+						minHeap.add(Arrays.asList(adjx, adjy, newMaxEffort));
 					}
 				}
 			}
