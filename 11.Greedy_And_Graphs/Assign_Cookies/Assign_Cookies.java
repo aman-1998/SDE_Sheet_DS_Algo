@@ -14,6 +14,10 @@ public class Assign_Cookies {
 		System.out.println(children);
 	}
 	
+	/*
+	 * T = O(min(m,n)) ; m = greed.length; n = size.length
+	 * S = O(1)
+	 */
 	public static int assignMaxCookies(int[] greed, int[] size) {
         
 		Arrays.sort(greed);
