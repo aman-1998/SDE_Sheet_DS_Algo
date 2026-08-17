@@ -2,7 +2,12 @@ package practice.dsa.sheet.part1;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * Given an integer array nums of unique elements, return all possible 
+ * subsets (the power set).
+ * The solution set must not contain duplicate subsets. Return the 
+ * solution in any order.
+ */
 public class Power_Set_1 {
 	
 	public static void main(String[] args) {
