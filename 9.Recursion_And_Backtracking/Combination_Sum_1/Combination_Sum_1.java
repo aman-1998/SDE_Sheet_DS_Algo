@@ -19,9 +19,9 @@ public class Combination_Sum_1 {
 	 * If an element can be picked only once (i.e., pick or not pick) then the
 	 * time complexity would have been 2^n but here an element can be picked
 	 * multiple times so, it will be 2^t where t is a variable. And each
-	 * combination can of any length say k. So, to copy eac combination in
+	 * combination can of any length say k. So, to copy each combination in
 	 * result list takes O(k) time. 
-	 * T = O(2^t + k)
+	 * T = O(2^t * k)
 	 * 
 	 * S = O(k) + O(k)  [k is the avg size of each combination and O(k) is approx system stack size]
 	 *   = O(k)
@@ -42,18 +42,20 @@ public class Combination_Sum_1 {
 		
 		int n = arr.length;
 		
+		if(target == 0) {
+			combinationList.add(new ArrayList<>(combination));
+			return;
+		}
+		
 		for(int i = start; i <= n-1; i++) {
 			
 			if(target < 0) {
 				return;
-			} else if(target == 0) {
-				combinationList.add(new ArrayList<>(combination));
-				return;
-			} else {
-				combination.add(arr[i]);
-				solve(arr, target-arr[i], i, combination, combinationList);
-				combination.remove(combination.size()-1);
-			}
+			} 
+			
+			combination.add(arr[i]);
+			solve(arr, target-arr[i], i, combination, combinationList);
+			combination.remove(combination.size()-1);
 		}
 	}
 	
